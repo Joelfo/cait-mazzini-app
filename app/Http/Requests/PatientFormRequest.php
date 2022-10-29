@@ -29,8 +29,8 @@ class PatientFormRequest extends FormRequest
     {
         return [
             'name' => ['required', 'between:3,255'],
-            'sus_card' => ['required', 'numeric', 'max_digits: 15'],
-            'rg' => ['required', 'numeric', 'max_digits: 15'],
+            'sus_card' => ['required', 'numeric','min_digits: 8', 'max_digits: 15'],
+            'rg' => ['required', 'numeric','min_digits: 8', 'max_digits: 15'],
             'cpf' => ['required', new Cpf],
             'admission_date' => ['required', 'date_format:Y-m-d'],
             'type' => ['required', 'numeric', new Type],
