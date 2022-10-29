@@ -23,7 +23,7 @@ Route::get('/token', function(){
     echo csrf_token();
 });
 
-Route::resource('/patients', PatientController::class)->only(['index', 'create', 'store', 'destroy']);
+Route::resource('/patients', PatientController::class)->except(['show']);
 
 
 Route::resource('/users', UserController::class);
