@@ -17,7 +17,7 @@ class Cpf implements InvokableRule
     public function __invoke($attribute, $value, $fail)
     {
         if($this->cpfValidate($value) == false){
-            $fail(':attribute must be a valid CPF value');
+            $fail(':attribute deve ser um valor de CPF válido');
         }
     }
 

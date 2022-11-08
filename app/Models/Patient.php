@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\HealthUnity;
+use App\Models\Nationality;
+use Illuminate\Database\Eloquent\Builder;
 
 class Patient extends Model
 {
@@ -26,4 +29,17 @@ class Patient extends Model
         'address' 
     ];
     
+    public function healthUnity(){
+        return $this->belongsTo(HealthUnity::class);
+    }
+
+    public function Nationality(){
+        return $this->belongsTo(Nationality::class);
+    }
+
+    protected static function booted(){
+        self::addGlobalScope('alphabeticOrdered', function(Builder $queryBuilder){
+            $queryBuilder->orderBy('name');
+        });
+    }
 }

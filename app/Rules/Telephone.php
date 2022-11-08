@@ -16,7 +16,11 @@ class Telephone implements InvokableRule
      */
     public function __invoke($attribute, $value, $fail)
     {
-        //
+        /*
+        if($this->validateTelephone($value) == false){
+            $fail('O valor de :attribute precisa ser válido');
+        }
+        */
     }
 
     /**

@@ -30,6 +30,31 @@ return new class extends Migration
             $table->string('record_code', 10);
             $table->string('mother_name', 255);
             $table->string('address', 255);
+            $table->foreignId('health_unity_id')
+                ->nullable()
+                ->constrained('health_unities')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('relapse_id')
+                ->nullable()    
+                ->constrained()
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('release_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('district_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('nationality_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientFormRequest;
 use App\Models\Patient;
-
+use Illuminate\Http\Client\Request;
 
 class PatientController extends Controller
 {
@@ -16,13 +16,12 @@ class PatientController extends Controller
     }
 
     public function store(PatientFormRequest $request){
-        $request->validate();
         Patient::create($request->all());
         return to_route('patients.index');
     }
 
-    public function destroy(PatientFormRequest $request){
-        Patient::destroy($request->patient);
+    public function destroy(Patient $patient){
+        $patient->delete();
         return to_route('patients.index');
     }
 
