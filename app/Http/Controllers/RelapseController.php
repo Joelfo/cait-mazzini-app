@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RelapseFormRequest;
+use App\Models\Relapse;
 use Illuminate\Http\Request;
 
 class RelapseController extends Controller
@@ -13,17 +15,8 @@ class RelapseController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $relapses = Relapse::all();
+        echo json_encode($relapses);
     }
 
     /**
@@ -32,9 +25,10 @@ class RelapseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RelapseFormRequest $request)
     {
-        //
+        Relapse::create($request->all());
+        return to_route('relapses.index');
     }
 
     /**
@@ -48,16 +42,6 @@ class RelapseController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +50,11 @@ class RelapseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Relapse $relapse, RelapseFormRequest $request)
     {
-        //
+        $relapse->fill($request->all());
+        $relapse->save();
+        return to_route('relapses.index');
     }
 
     /**
@@ -77,8 +63,9 @@ class RelapseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Relapse $relapse)
     {
-        //
+        $relapse->delete();
+        return to_route('relapses.index');
     }
 }

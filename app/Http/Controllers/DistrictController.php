@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DistrictFormRequest;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\District;
 

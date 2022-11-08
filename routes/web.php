@@ -3,6 +3,7 @@
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HealthUnityController;
+use App\Http\Controllers\NationalityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::resource('/healthUnities', HealthUnityController::class)->except(['show']
 Route::resource('/cities', CityController::class)->except(['show']);
 
 Route::resource('/districts', DistrictController::class)->except(['show']);
+
+Route::resource('/nationalities', NationalityController::class);
 
 Route::resource('/users', UserController::class);
 

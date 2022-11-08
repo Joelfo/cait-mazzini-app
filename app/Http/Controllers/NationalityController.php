@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NationalityFormRequest;
+use App\Models\Nationality;
 use Illuminate\Http\Request;
 
 class NationalityController extends Controller
@@ -13,17 +15,8 @@ class NationalityController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $nationalities = Nationality::all();
+        echo json_encode($nationalities);
     }
 
     /**
@@ -32,9 +25,10 @@ class NationalityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NationalityFormRequest $request)
     {
-        //
+        Nationality::create($request->all());
+        return to_route('nationalities.index');
     }
 
     /**
@@ -48,16 +42,6 @@ class NationalityController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +50,11 @@ class NationalityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Nationality $nationality, NationalityFormRequest $request)
     {
-        //
+        $nationality->fill($request->all());
+        $nationality->save();
+        return to_route('nationalities.index');
     }
 
     /**
@@ -77,8 +63,9 @@ class NationalityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Nationality $nationality)
     {
-        //
+        $nationality->delete();
+        return to_route('nationalities.index');
     }
 }
