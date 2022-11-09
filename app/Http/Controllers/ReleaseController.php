@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReleaseFormRequest;
+use App\Models\Release;
 use Illuminate\Http\Request;
 
 class ReleaseController extends Controller
@@ -13,17 +15,8 @@ class ReleaseController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $releases = Release::all();
+        echo json_encode($releases);
     }
 
     /**
@@ -32,9 +25,10 @@ class ReleaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReleaseFormRequest $request)
     {
-        //
+        Release::create($request->all());
+        return to_route('releases.index');
     }
 
     /**
@@ -48,16 +42,6 @@ class ReleaseController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +50,11 @@ class ReleaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Release $release, ReleaseFormRequest $request)
     {
-        //
+        $release->fill($request->all());
+        $release->save();
+        return to_route('releases.index');
     }
 
     /**
@@ -77,8 +63,9 @@ class ReleaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Release $release)
     {
-        //
+        $release->delete();
+        return to_route('releases.index');
     }
 }
