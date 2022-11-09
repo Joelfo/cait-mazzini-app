@@ -9,6 +9,8 @@ class Relapse extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'reason'
+        'reason',
+        'more_than_six_months',
+        'patient_id'
     ];
 }

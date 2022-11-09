@@ -9,9 +9,9 @@ class Release extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'plusSixMonths', 
         'reason', 
-        'additionalInfo'
+        'additional_info',
+        'patient_id'
     ];
 
     public function patient(){

@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\InvokableRule;
 
-class RelapseReason implements InvokableRule
+class ReleaseReason implements InvokableRule
 {
     /**
      * Run the validation rule.

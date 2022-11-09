@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ReleaseReason;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReleaseFormRequest extends FormRequest
@@ -24,7 +25,7 @@ class ReleaseFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'reason' => ['required']
+            'reason' => ['required', new ReleaseReason]
         ];
     }
 }

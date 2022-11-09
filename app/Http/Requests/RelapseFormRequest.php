@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\RelapseReason;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class RelapseFormRequest extends FormRequest
@@ -25,7 +25,8 @@ class RelapseFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'reason' => ['required', 'numeric', new RelapseReason]
+            'reason' => ['required'],
+            'more_than_six_months' => ['required', 'boolean']
         ];
     }
 }

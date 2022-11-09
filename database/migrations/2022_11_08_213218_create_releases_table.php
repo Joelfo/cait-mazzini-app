@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('releases', function (Blueprint $table) {
             $table->id();
+            $table->integer('reason');
+            $table->text('additional_info');
+            $table->foreignId('patient_id')
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }

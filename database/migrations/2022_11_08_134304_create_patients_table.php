@@ -35,16 +35,6 @@ return new class extends Migration
                 ->constrained('health_unities')
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
-            $table->foreignId('relapse_id')
-                ->nullable()    
-                ->constrained()
-                ->nullOnDelete()
-                ->cascadeOnUpdate();
-            $table->foreignId('release_id')
-                ->nullable()
-                ->constrained()
-                ->nullOnDelete()
-                ->cascadeOnUpdate();
             $table->foreignId('district_id')
                 ->nullable()
                 ->constrained()

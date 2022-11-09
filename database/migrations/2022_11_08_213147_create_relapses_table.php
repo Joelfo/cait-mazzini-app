@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('relapses', function (Blueprint $table) {
             $table->id();
+            $table->text('reason');
+            $table->tinyInteger('more_than_six_months');
+            $table->foreignId('patient_id')
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }
