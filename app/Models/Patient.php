@@ -33,8 +33,24 @@ class Patient extends Model
         return $this->belongsTo(HealthUnity::class);
     }
 
-    public function Nationality(){
+    public function nationality(){
         return $this->belongsTo(Nationality::class);
+    }
+
+    public function district(){
+        return $this->belongsTo(District::class);
+    }
+
+    public function releases(){
+        return $this->hasMany(Release::class);
+    }
+
+    public function relapses(){
+        return $this->hasMany(Relapse::class);
+    }
+
+    public function birthplace(){
+        return $this->belongsTo(City::class);
     }
 
     protected static function booted(){

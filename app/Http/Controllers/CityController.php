@@ -15,7 +15,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
+        $cities = City::with('districts')->get();
         echo json_encode($cities);
     }
 
@@ -39,7 +39,9 @@ class CityController extends Controller
      */
     public function show($id)
     {
-        //
+        $city = City::find($id);
+        echo json_encode($city);
+        echo json_encode($city->districts);
     }
 
 

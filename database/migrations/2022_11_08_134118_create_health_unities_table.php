@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('health_unities', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
+            $table->string('telephone')->nullable();
             $table->foreignId('district_id')
                 ->nullable()
                 ->constrained()

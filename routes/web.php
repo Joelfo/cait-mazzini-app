@@ -33,7 +33,7 @@ Route::resource('/patients', PatientController::class)->except(['show']);
 
 Route::resource('/healthUnities', HealthUnityController::class)->except(['show']);
 
-Route::resource('/cities', CityController::class)->except(['show']);
+Route::resource('/cities', CityController::class);
 
 Route::resource('/districts', DistrictController::class)->except(['show']);
 

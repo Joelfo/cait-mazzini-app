@@ -36,14 +36,16 @@ return new class extends Migration
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
             $table->foreignId('district_id')
-                ->nullable()
                 ->constrained()
-                ->nullOnDelete()
+                ->restrictOnDelete()
                 ->cascadeOnUpdate();
             $table->foreignId('nationality_id')
-                ->nullable()
                 ->constrained()
-                ->nullOnDelete()
+                ->restrictOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('birthplace_id')
+                ->constrained('cities')
+                ->restrictOnDelete()
                 ->cascadeOnUpdate();
             $table->timestamps();
         });
