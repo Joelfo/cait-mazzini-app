@@ -16,23 +16,22 @@ class PatientController extends Controller
     }
 
     public function index(){
-        $patients = Patient::all();
-        echo json_encode($patients);
+        $response = $this->repository->all();
+        echo json_encode($response);
     }
 
     public function store(PatientFormRequest $request){
-        Patient::create($request->all());
-        return to_route('patients.index');
+        $response = $this->repository->create($request->all());
+        echo json_encode($response);
     }
 
     public function destroy(Patient $patient){
-        $patient->delete();
-        return to_route('patients.index');
+        $response = $this->repository->delete($patient);
+        echo json_encode($response);
     }
 
     public function update(Patient $patient, PatientFormRequest $request){
-        $patient->fill($request->all());
-        $patient->save();
-        return to_route('patients.index');
+        $response = $this->repository->update($patient, $request->all());
+        echo json_encode($response);
     }
 }

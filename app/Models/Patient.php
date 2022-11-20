@@ -26,7 +26,12 @@ class Patient extends Model
         'birth_date', 
         'record_code', 
         'mother_name', 
-        'address' 
+        'address',
+        'health_unity_id',
+        'district_id',
+        'nationality_id',
+        'birthplace_id',
+
     ];
     
     public function healthUnity(){
