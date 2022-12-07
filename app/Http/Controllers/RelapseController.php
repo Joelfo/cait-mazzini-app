@@ -15,8 +15,7 @@ class RelapseController extends Controller
      */
     public function index()
     {
-        $relapses = Relapse::all();
-        echo json_encode($relapses);
+        return $this->repository->all();
     }
 
     /**
@@ -27,8 +26,7 @@ class RelapseController extends Controller
      */
     public function store(RelapseFormRequest $request)
     {
-        Relapse::create($request->all());
-        return to_route('relapses.index');
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -39,7 +37,7 @@ class RelapseController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->read($id);
     }
 
 
@@ -52,9 +50,7 @@ class RelapseController extends Controller
      */
     public function update(Relapse $relapse, RelapseFormRequest $request)
     {
-        $relapse->fill($request->all());
-        $relapse->save();
-        return to_route('relapses.index');
+        return $this->repository->update($relapse, $request->all());
     }
 
     /**
@@ -65,7 +61,6 @@ class RelapseController extends Controller
      */
     public function destroy(Relapse $relapse)
     {
-        $relapse->delete();
-        return to_route('relapses.index');
+        return $this->repository->delete($relapse);
     }
 }

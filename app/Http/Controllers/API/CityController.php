@@ -1,14 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Http\Requests\DistrictFormRequest;
+namespace App\Http\Controllers\API;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CityFormRequest;
 use App\Models\City;
+use App\Repositories\CityRepository;
 use Illuminate\Http\Request;
-use App\Models\District;
 
-class DistrictController extends Controller
+class CityController extends Controller
 {
+
+    public function __construct(private CityRepository $repository)
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +23,7 @@ class DistrictController extends Controller
     public function index()
     {
         return $this->repository->all();
+        
     }
 
     /**
@@ -25,9 +32,10 @@ class DistrictController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DistrictFormRequest $request)
+    public function store(CityFormRequest $request)
     {
-        return $this->request->create($request);
+        return $this->repository->create($request->all());
+        
     }
 
     /**
@@ -39,6 +47,7 @@ class DistrictController extends Controller
     public function show($id)
     {
         return $this->repository->read($id);
+       
     }
 
 
@@ -49,9 +58,10 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(District $district, DistrictFormRequest $request)
+    public function update(City $city, CityFormRequest $request)
     {
-        return $this->repository->update($district, $request);
+        return $this->repository->update($city, $request->all());
+      
     }
 
     /**
@@ -60,8 +70,8 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(District $district)
+    public function destroy(City $city)
     {
-        return $this->repository->delete($district);
+        return $this->repository->delete($city);
     }
 }

@@ -15,8 +15,7 @@ class HealthUnityController extends Controller
      */
     public function index()
     {
-        $healthUnities = HealthUnity::all();
-        echo json_encode($healthUnities);
+        return $this->repository->all();
     }
 
     /**
@@ -27,8 +26,7 @@ class HealthUnityController extends Controller
      */
     public function store(HealthUnityFormRequest $request)
     {
-        HealthUnity::create($request->all());
-        return to_route('healthUnities.index');
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -39,7 +37,7 @@ class HealthUnityController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->read($id);
     }
 
 
@@ -52,9 +50,7 @@ class HealthUnityController extends Controller
      */
     public function update(HealthUnity $healthUnity, HealthUnityFormRequest $request)
     {
-        $healthUnity->fill($request->all());
-        $healthUnity->save();
-        return to_route('healthUnities.index');
+        return $this->repository->update($healthUnity, $request->all());
     }
 
     /**
@@ -65,7 +61,6 @@ class HealthUnityController extends Controller
      */
     public function destroy(HealthUnity $healthUnity)
     {
-        $healthUnity->delete();
-        return to_route('healthUnities.index');
+        return $this->repository->delete($healthUnity);
     }
 }

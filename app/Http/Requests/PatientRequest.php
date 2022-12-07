@@ -8,7 +8,7 @@ use App\Rules\Arrive;
 use App\Rules\Type;
 use App\Rules\Telephone;
 
-class PatientFormRequest extends FormRequest
+class PatientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

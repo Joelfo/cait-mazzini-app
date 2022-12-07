@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\DistrictFormRequest;
-use App\Models\City;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\HealthUnityFormRequest;
+use App\Models\HealthUnity;
 use Illuminate\Http\Request;
-use App\Models\District;
 
-class DistrictController extends Controller
+class HealthUnityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,9 +25,9 @@ class DistrictController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DistrictFormRequest $request)
+    public function store(HealthUnityFormRequest $request)
     {
-        return $this->request->create($request);
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -49,9 +49,9 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(District $district, DistrictFormRequest $request)
+    public function update(HealthUnity $healthUnity, HealthUnityFormRequest $request)
     {
-        return $this->repository->update($district, $request);
+        return $this->repository->update($healthUnity, $request->all());
     }
 
     /**
@@ -60,8 +60,8 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(District $district)
+    public function destroy(HealthUnity $healthUnity)
     {
-        return $this->repository->delete($district);
+        return $this->repository->delete($healthUnity);
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\DistrictFormRequest;
-use App\Models\City;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ReleaseFormRequest;
+use App\Models\Release;
 use Illuminate\Http\Request;
-use App\Models\District;
 
-class DistrictController extends Controller
+class ReleaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,9 +25,9 @@ class DistrictController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DistrictFormRequest $request)
+    public function store(ReleaseFormRequest $request)
     {
-        return $this->request->create($request);
+        return $this->repository->create($request);
     }
 
     /**
@@ -38,7 +38,7 @@ class DistrictController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->read($id);
+        return $this->repository->show($id);
     }
 
 
@@ -49,9 +49,9 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(District $district, DistrictFormRequest $request)
+    public function update(Release $release, ReleaseFormRequest $request)
     {
-        return $this->repository->update($district, $request);
+        return $this->repository->update($release, $request->all());
     }
 
     /**
@@ -60,8 +60,8 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(District $district)
+    public function destroy(Release $release)
     {
-        return $this->repository->delete($district);
+        return $this->repository->destroy($release);
     }
 }

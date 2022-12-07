@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CityFormRequest;
 use App\Models\City;
+use App\Repositories\CityRepository;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
+
+    public function __construct(private CityRepository $repository)
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +22,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::with('districts')->get();
-        echo json_encode($cities);
+        return $this->repository->all();
+        
     }
 
     /**
@@ -27,8 +34,8 @@ class CityController extends Controller
      */
     public function store(CityFormRequest $request)
     {
-        City::create($request->all());
-        return to_route('cities.index');
+        return $this->repository->create($request->all());
+        
     }
 
     /**
@@ -39,9 +46,8 @@ class CityController extends Controller
      */
     public function show($id)
     {
-        $city = City::find($id);
-        echo json_encode($city);
-        echo json_encode($city->districts);
+        return $this->repository->read($id);
+       
     }
 
 
@@ -54,9 +60,8 @@ class CityController extends Controller
      */
     public function update(City $city, CityFormRequest $request)
     {
-        $city->fill($request->all());
-        $city->save();
-        return to_route('cities.index');
+        return $this->repository->update($city, $request->all());
+      
     }
 
     /**
@@ -67,7 +72,6 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        $city->delete();
-        return to_route('cities.index');
+        return $this->repository->delete($city);
     }
 }

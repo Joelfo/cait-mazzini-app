@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\DistrictFormRequest;
-use App\Models\City;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\NationalityFormRequest;
+use App\Models\Nationality;
 use Illuminate\Http\Request;
-use App\Models\District;
 
-class DistrictController extends Controller
+class NationalityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,9 +25,9 @@ class DistrictController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DistrictFormRequest $request)
+    public function store(NationalityFormRequest $request)
     {
-        return $this->request->create($request);
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -49,9 +49,9 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(District $district, DistrictFormRequest $request)
+    public function update(Nationality $nationality, NationalityFormRequest $request)
     {
-        return $this->repository->update($district, $request);
+        return $this->repository->update($nationality, $request);
     }
 
     /**
@@ -60,8 +60,8 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(District $district)
+    public function destroy(Nationality $nationality)
     {
-        return $this->repository->delete($district);
+        return $this->repository->update($nationality);
     }
 }

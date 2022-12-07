@@ -15,8 +15,7 @@ class ReleaseController extends Controller
      */
     public function index()
     {
-        $releases = Release::all();
-        echo json_encode($releases);
+        return $this->repository->all();
     }
 
     /**
@@ -27,8 +26,7 @@ class ReleaseController extends Controller
      */
     public function store(ReleaseFormRequest $request)
     {
-        Release::create($request->all());
-        return to_route('releases.index');
+        return $this->repository->create($request);
     }
 
     /**
@@ -39,7 +37,7 @@ class ReleaseController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->show($id);
     }
 
 
@@ -52,9 +50,7 @@ class ReleaseController extends Controller
      */
     public function update(Release $release, ReleaseFormRequest $request)
     {
-        $release->fill($request->all());
-        $release->save();
-        return to_route('releases.index');
+        return $this->repository->update($release, $request->all());
     }
 
     /**
@@ -65,7 +61,6 @@ class ReleaseController extends Controller
      */
     public function destroy(Release $release)
     {
-        $release->delete();
-        return to_route('releases.index');
+        return $this->repository->destroy($release);
     }
 }

@@ -15,8 +15,7 @@ class NationalityController extends Controller
      */
     public function index()
     {
-        $nationalities = Nationality::all();
-        echo json_encode($nationalities);
+        return $this->repository->all();
     }
 
     /**
@@ -27,8 +26,7 @@ class NationalityController extends Controller
      */
     public function store(NationalityFormRequest $request)
     {
-        Nationality::create($request->all());
-        return to_route('nationalities.index');
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -39,7 +37,7 @@ class NationalityController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->read($id);
     }
 
 
@@ -52,9 +50,7 @@ class NationalityController extends Controller
      */
     public function update(Nationality $nationality, NationalityFormRequest $request)
     {
-        $nationality->fill($request->all());
-        $nationality->save();
-        return to_route('nationalities.index');
+        return $this->repository->update($nationality, $request);
     }
 
     /**
@@ -65,7 +61,6 @@ class NationalityController extends Controller
      */
     public function destroy(Nationality $nationality)
     {
-        $nationality->delete();
-        return to_route('nationalities.index');
+        return $this->repository->update($nationality);
     }
 }
