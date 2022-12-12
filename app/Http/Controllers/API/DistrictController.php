@@ -3,66 +3,39 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DistrictFormRequest;
-use App\Models\City;
-use Illuminate\Http\Request;
-use App\Models\District;
+use App\Http\Requests\DistrictRequest;
+use App\Services\DistrictService;
 
 class DistrictController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private DistrictService $service)
     {
-        return $this->repository->all();
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(DistrictFormRequest $request)
-    {
-        return $this->request->create($request);
+    public function index(){
+        return response()
+            ->json($this->service->index(), 200);
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return $this->repository->read($id);
+    public function show(int $districtId){
+        return response()->json($this->service->show($districtId), 200);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(District $district, DistrictFormRequest $request)
-    {
-        return $this->repository->update($district, $request);
+    public function store(DistrictRequest $request){
+        return response()
+            ->json($this->service->store($request->all()), 201);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(District $district)
-    {
-        return $this->repository->delete($district);
+    public function destroy(int $districtId){
+        $this->service->destroy($districtId);
+        return response()->noContent();
+        
+    }
+
+    public function update(int $id, DistrictRequest $request){
+        return response()->json($this->service->update($id, $request->all()), 200);
     }
 }

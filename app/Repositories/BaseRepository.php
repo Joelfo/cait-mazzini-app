@@ -8,7 +8,7 @@ interface BaseRepository {
 
     public function create($data);
 
-    public function delete($model);
+    public function delete($id);
 
     public function update($model, $data);
 }

@@ -3,65 +3,40 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\HealthUnityFormRequest;
-use App\Models\HealthUnity;
-use Illuminate\Http\Request;
+use App\Http\Requests\HealthUnityRequest;
+use App\Services\HealthUnityService;
+
 
 class HealthUnityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private HealthUnityService $service)
     {
-        return $this->repository->all();
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(HealthUnityFormRequest $request)
-    {
-        return $this->repository->create($request->all());
+    public function index(){
+        return response()
+            ->json($this->service->index(), 200);
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return $this->repository->read($id);
+    public function show(int $healthUnityId){
+        return response()->json($this->service->show($healthUnityId), 200);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(HealthUnity $healthUnity, HealthUnityFormRequest $request)
-    {
-        return $this->repository->update($healthUnity, $request->all());
+    public function store(HealthUnityRequest $request){
+        return response()
+            ->json($this->service->store($request->all()), 201);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(HealthUnity $healthUnity)
-    {
-        return $this->repository->delete($healthUnity);
+    public function destroy(int $healthUnityId){
+        $this->service->destroy($healthUnityId);
+        return response()->noContent();
+        
+    }
+
+    public function update(int $id, HealthUnityRequest $request){
+        return response()->json($this->service->update($id, $request->all()), 200);
     }
 }

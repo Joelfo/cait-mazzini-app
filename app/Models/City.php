@@ -12,6 +12,8 @@ class City extends Model
         'name'
     ];
 
+    protected $with = ['districts'];
+    
     public function districts(){
         return $this->hasMany(District::class);
     }

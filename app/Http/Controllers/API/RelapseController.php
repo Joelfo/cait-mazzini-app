@@ -3,65 +3,38 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RelapseFormRequest;
-use App\Models\Relapse;
-use Illuminate\Http\Request;
-
+use App\Http\Requests\RelapseRequest;
+use App\Services\RelapseService;
 class RelapseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private RelapseService $service)
     {
-        return $this->repository->all();
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(RelapseFormRequest $request)
-    {
-        return $this->repository->create($request->all());
+    public function index(){
+        return response()
+            ->json($this->service->index(), 200);
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return $this->repository->read($id);
+    public function show(int $relapseId){
+     return response()->json($this->service->show($relapseId), 200);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Relapse $relapse, RelapseFormRequest $request)
-    {
-        return $this->repository->update($relapse, $request->all());
+    public function store(RelapseRequest $request){
+        return response()
+            ->json($this->service->store($request->all()), 201);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Relapse $relapse)
-    {
-        return $this->repository->delete($relapse);
+    public function destroy(int $relapseId){
+     $this->service->destroy($relapseId);
+     return response()->noContent();
+        
+    }
+
+    public function update(int $id, RelapseRequest $request){
+        return response()->json($this->service->update($id, $request->all()), 200);
     }
 }

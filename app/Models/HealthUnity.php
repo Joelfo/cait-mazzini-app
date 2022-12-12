@@ -14,6 +14,8 @@ class HealthUnity extends Model
         'name'
     ];
 
+    
+
     public function patients(){
         return $this->hasMany(Patient::class);
     }

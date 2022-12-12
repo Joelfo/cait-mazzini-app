@@ -6,12 +6,4 @@ use App\Repositories\CityRepository;
 
 class EloquentCityRepository extends EloquentBaseRepository implements CityRepository {
     protected $modelClass = City::class;
-
-    public function all(){
-        return $this->model->with('districts')->get();
-    }
-
-    public function show($id){
-        return $this->model->with('districts')->find($id);
-    }
 }

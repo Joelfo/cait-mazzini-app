@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ReleaseReason;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReleaseFormRequest extends FormRequest
+class HealthUnityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +24,7 @@ class ReleaseFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'reason' => ['required', new ReleaseReason]
+            'name' => ['required', 'between:3,255']
         ];
     }
 }

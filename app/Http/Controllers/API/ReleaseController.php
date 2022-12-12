@@ -3,65 +3,39 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ReleaseFormRequest;
-use App\Models\Release;
-use Illuminate\Http\Request;
+use App\Http\Requests\ReleaseRequest;
+use App\Services\ReleaseService;
 
 class ReleaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private ReleaseService $service)
     {
-        return $this->repository->all();
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ReleaseFormRequest $request)
-    {
-        return $this->repository->create($request);
+    public function index(){
+        return response()
+            ->json($this->service->index(), 200);
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return $this->repository->show($id);
+    public function show(int $releaseId){
+        return response()->json($this->service->show($releaseId), 200);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Release $release, ReleaseFormRequest $request)
-    {
-        return $this->repository->update($release, $request->all());
+    public function store(ReleaseRequest $request){
+        return response()
+            ->json($this->service->store($request->all()), 201);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Release $release)
-    {
-        return $this->repository->destroy($release);
+    public function destroy(int $releaseId){
+        $this->service->destroy($releaseId);
+        return response()->noContent();
+        
+    }
+
+    public function update(int $id, ReleaseRequest $request){
+        return response()->json($this->service->update($id, $request->all()), 200);
     }
 }

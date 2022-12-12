@@ -3,65 +3,39 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NationalityFormRequest;
-use App\Models\Nationality;
-use Illuminate\Http\Request;
+use App\Http\Requests\NationalityRequest;
+use App\Services\NationalityService;
 
 class NationalityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(private NationalityService $service)
     {
-        return $this->repository->all();
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(NationalityFormRequest $request)
-    {
-        return $this->repository->create($request->all());
+    public function index(){
+        return response()
+            ->json($this->service->index(), 200);
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return $this->repository->read($id);
+    public function show(int $nationalityId){
+        return response()->json($this->service->show($nationalityId), 200);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Nationality $nationality, NationalityFormRequest $request)
-    {
-        return $this->repository->update($nationality, $request);
+    public function store(NationalityRequest $request){
+        return response()
+            ->json($this->service->store($request->all()), 201);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Nationality $nationality)
-    {
-        return $this->repository->update($nationality);
+    public function destroy(int $nationalityId){
+        $this->service->destroy($nationalityId);
+        return response()->noContent();
+        
+    }
+
+    public function update(int $id, NationalityRequest $request){
+        return response()->json($this->service->update($id, $request->all()), 200);
     }
 }

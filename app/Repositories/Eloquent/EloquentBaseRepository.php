@@ -26,14 +26,14 @@ class EloquentBaseRepository{
         return $createdModel;
     }
 
-    public function update($model, $data) {
-        $updatedModel = $model->fill($data);
+    public function update($id, $data) { 
+        $model = $this->model->find($id);
+        $model->fill($data);
         $model->save();
-        return $updatedModel;
+        return $model;
     }
     
-    public function delete($model) {
-        $model->delete();
-        return $model;
+    public function delete($id) {
+        $this->model->destroy($id);
     }
 }

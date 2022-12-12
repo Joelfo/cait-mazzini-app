@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-
+use App\Rules\ReleaseReason;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RelapseFormRequest extends FormRequest
+class ReleaseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,7 @@ class RelapseFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'reason' => ['required'],
-            'more_than_six_months' => ['required', 'boolean']
+            'reason' => ['required', new ReleaseReason]
         ];
     }
 }

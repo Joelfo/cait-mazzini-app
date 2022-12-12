@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class CityFormRequest extends FormRequest
+class RelapseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +25,8 @@ class CityFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'between:3,255']
+            'reason' => ['required'],
+            'more_than_six_months' => ['required', 'boolean']
         ];
     }
 }
