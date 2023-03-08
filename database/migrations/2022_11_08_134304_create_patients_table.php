@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('rg', 15)->unique();
             $table->string('cpf', 11)->unique();
             $table->date('admission_date');
-            $table->integer('type');
-            $table->integer('arrive');
+            $table->enum('type', ['TB', 'PNT', 'Quimioprofilaxia']);
+            $table->enum('arrival', ['Encaminhado', 'Referenciado', 'Demanda Espontanea']);
             $table->string('telephone_1', 14);
             $table->string('telephone_2', 14)->nullable();
             $table->string('cep', 8);

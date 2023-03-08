@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Arrival;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Cpf;
 use App\Rules\Arrive;
 use App\Rules\Type;
 use App\Rules\Telephone;
+use Illuminate\Validation\Rules\Enum;
 
 class PatientRequest extends FormRequest
 {
@@ -33,8 +35,8 @@ class PatientRequest extends FormRequest
             'rg' => ['required', 'numeric','min_digits: 8', 'max_digits: 15'],
             'cpf' => ['required', new Cpf],
             'admission_date' => ['required', 'date_format:Y-m-d'],
-            'type' => ['required', 'numeric', new Type],
-            'arrive' => ['required', 'numeric', new Arrive],
+            'type' => ['required', 'numeric', new Enum(Type::class)],
+            'arrive' => ['required', 'numeric', new Enum(Arrival::class)],
             'telephone_1' => ['required', new Telephone],
             'telephone_2' => ['nullable', 'numeric', new Telephone],
             'cep' => ['required', 'numeric'],
