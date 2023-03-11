@@ -5,5 +5,8 @@ use App\Models\Release;
 use App\Repositories\ReleaseRepository;
 
 class EloquentReleaseRepository extends EloquentBaseRepository implements ReleaseRepository {
-    protected $modelClass = Release::class;
+    public function __construct()
+    {
+        parent::__construct(Release::class);
+    }
 }

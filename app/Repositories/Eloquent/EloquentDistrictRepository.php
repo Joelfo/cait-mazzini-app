@@ -5,5 +5,8 @@ use App\Models\District;
 use App\Repositories\DistrictRepository;
 
 class EloquentDistrictRepository extends EloquentBaseRepository implements DistrictRepository {
-    protected $modelClass = District::class;
+    public function __construct()
+    {
+        parent::__construct(District::class);
+    }
 }

@@ -5,5 +5,9 @@ use App\Models\Patient;
 use App\Repositories\PatientRepository;
 
 class EloquentPatientRepository extends EloquentBaseRepository implements PatientRepository {
-    protected $modelClass = Patient::class;
+    //protected $modelClass = Patient::class;
+
+    public function __construct(){
+        parent::__construct(Patient::class);
+    }
 }

@@ -5,5 +5,8 @@ use App\Models\HealthUnity;
 use App\Repositories\HealthUnityRepository;
 
 class EloquentHealthUnityRepository extends EloquentBaseRepository implements HealthUnityRepository {
-    protected $modelClass = HealthUnity::class;
+    public function __construct()
+    {
+        parent::__construct(HealthUnity::class);
+    }
 }

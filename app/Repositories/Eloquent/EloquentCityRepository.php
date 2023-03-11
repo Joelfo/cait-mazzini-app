@@ -5,5 +5,8 @@ use App\Models\City;
 use App\Repositories\CityRepository;
 
 class EloquentCityRepository extends EloquentBaseRepository implements CityRepository {
-    protected $modelClass = City::class;
+    public function __construct()
+    {
+        parent::__construct(City::class);
+    }
 }

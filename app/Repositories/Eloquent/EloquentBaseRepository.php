@@ -4,13 +4,14 @@ namespace App\Repositories\Eloquent;
 class EloquentBaseRepository{
     protected $model;
 
-    public function __construct()
-    {
-        $this->model = $this->resolveModel();
-    }
 
-    protected function resolveModel(){
-        return app($this->modelClass);
+    /**
+     * @param mixed $modelClass 
+     * The class which the model used by the specific repository belongs to.
+     */
+    public function __construct($modelClass)
+    {
+        $this->model = app($modelClass);
     }
 
     public function read($id){

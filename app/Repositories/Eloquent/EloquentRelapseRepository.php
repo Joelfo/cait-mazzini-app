@@ -5,5 +5,8 @@ use App\Models\Relapse;
 use App\Repositories\RelapseRepository;
 
 class EloquentRelapseRepository extends EloquentBaseRepository implements RelapseRepository {
-    protected $modelClass = Relapse::class;
+    public function __construct()
+    {
+        parent::__construct(Relapse::class);
+    }
 }
