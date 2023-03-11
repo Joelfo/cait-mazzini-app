@@ -5,7 +5,7 @@ use App\Repositories\RelapseRepository;
 
 class RelapseService extends BaseService
 {
-    public function construct(RelapseRepository $repository){
+    public function __construct(RelapseRepository $repository){
         $this->setRepository($repository);
     }
 }

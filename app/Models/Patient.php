@@ -18,7 +18,7 @@ class Patient extends Model
         'cpf', 
         'admission_date', 
         'type', 
-        'arrive', 
+        'arrival', 
         'telephone_1', 
         'telephone_2', 
         'cep', 

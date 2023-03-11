@@ -5,7 +5,7 @@ use App\Repositories\CityRepository;
 
 class CityService extends BaseService
 {
-    public function construct(CityRepository $repository){
+    public function __construct(CityRepository $repository){
         $this->setRepository($repository);
     }
 }

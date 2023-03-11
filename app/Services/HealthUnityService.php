@@ -5,7 +5,7 @@ use App\Repositories\HealthUnityRepository;
 
 class HealthUnityService extends BaseService
 {
-    public function construct(HealthUnityRepository $repository){
+    public function __construct(HealthUnityRepository $repository){
         $this->setRepository($repository);
     }
 }

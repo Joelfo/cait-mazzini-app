@@ -5,7 +5,7 @@ use App\Repositories\NationalityRepository;
 
 class NationalityService extends BaseService
 {
-    public function construct(NationalityRepository $repository){
+    public function __construct(NationalityRepository $repository){
         $this->setRepository($repository);
     }
 }
