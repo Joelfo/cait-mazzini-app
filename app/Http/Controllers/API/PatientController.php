@@ -2,51 +2,43 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\BaseAPIController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Helper\ControllerHelper;
 use App\Http\Requests\PatientRequest;
 use App\Http\Resources\PatientResource;
 use App\Models\Patient;
 use App\Services\PatientService;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class PatientController extends 
+Controller
 {
+    private ControllerHelper $controllerHelper;
+
     public function __construct(private PatientService $service)
     {
-        
+        $this->controllerHelper = new ControllerHelper($service, PatientResource::class);
     }
 
     public function index(Request $request){
-        $limit = 10;
-        if ($request->filled('limit')){
-            $limit = $request->input('limit');
-            if (is_numeric($request->input('limit'))){
-                $limit = (int) $limit;
-            }
-        }
-        
-        $resultPage = $this->service->index($limit);
-        return PatientResource::collection($resultPage);
+        return $this->controllerHelper->index($request);
     }
 
     public function show(int $patientId){
-        return response()->json($this->service->show($patientId), 200);
+        return $this->controllerHelper->show($patientId);
     }
 
     public function store(PatientRequest $request){
-        return response()
-            ->json($this->service->store($request->all()), 201);
-        
+        return $this->controllerHelper->store($request);    
     }
 
     public function destroy(int $patientId){
-        $this->service->destroy($patientId);
-        return response()->noContent();
-        
+        return $this->controllerHelper->destroy($patientId);
     }
 
     public function update(int $id, PatientRequest $request){
-        return response()->json($this->service->update($id, $request->all()), 200);
+        return $this->controllerHelper->update($id, $request);
     }
 
     public function showByHealthUnity(int $healthUnityId){
