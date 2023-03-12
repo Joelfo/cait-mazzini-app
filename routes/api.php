@@ -26,19 +26,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/patients', PatientController::class);
+Route::apiResource('patients', PatientController::class);
 
 Route::get("/healthUnities/{healthUnityId}/patients", [PatientController::class, 'showByHealthUnity']);
-Route::apiResource('/healthUnities', HealthUnityController::class);
+Route::apiResource('healthUnities', HealthUnityController::class);
 
-Route::apiResource('/cities', CityController::class);
+Route::apiResource('cities', CityController::class);
 
-Route::apiResource('/districts', DistrictController::class)->except(['show']);
+Route::apiResource('districts', DistrictController::class);
 
-Route::apiResource('/nationalities', NationalityController::class);
+Route::apiResource('nationalities', NationalityController::class);
 
-Route::apiResource('/relapses', RelapseController::class);
+Route::apiResource('relapses', RelapseController::class);
 
-Route::apiResource('/releases', ReleaseController::class);
+Route::apiResource('releases', ReleaseController::class);
 
-Route::apiResource('/users', UserController::class);
+Route::apiResource('users', UserController::class);

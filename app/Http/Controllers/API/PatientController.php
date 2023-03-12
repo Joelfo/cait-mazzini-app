@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRequest;
+use App\Http\Resources\PatientResource;
 use App\Models\Patient;
 use App\Services\PatientService;
 use Illuminate\Http\Request;
@@ -25,8 +26,7 @@ class PatientController extends Controller
         }
         
         $resultPage = $this->service->index($limit);
-        return response()->json($resultPage, 200);
-        
+        return PatientResource::collection($resultPage);
     }
 
     public function show(int $patientId){

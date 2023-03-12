@@ -12,6 +12,16 @@ class PatientHateoas
 
     public function self(Patient $patient) : ?Link
     {
-        //
+        return $this->link('patients.show', ['patient' => $patient]);
+    }
+
+    public function district(Patient $patient) : ?Link
+    {
+        return $this->link('districts.show', ['district' => $patient->district]);
+    }
+
+    public function healthUnity(Patient $patient) : ?Link
+    {
+        return $this->link('healthUnities.show', ['healthUnity' => $patient->district]);
     }
 }
