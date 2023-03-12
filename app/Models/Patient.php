@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\HealthUnity;
 use App\Models\Nationality;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Patient extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name', 
         'sus_card', 
@@ -34,8 +36,12 @@ class Patient extends Model
 
     ];
     
+    protected $casts = [
+        'pregnant' => 'boolean'
+    ];
+
     public function healthUnity(){
-        return $this->belongsTo(HealthUnity::class);
+        return $this->belongsTo(HealthUnity::class, 'health_unity_id');
     }
 
     public function nationality(){

@@ -28,7 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/patients', PatientController::class);
 
-Route::apiResource('/healthUnities', HealthUnityController::class)->except(['show']);
+Route::get("/healthUnities/{healthUnityId}/patients", [PatientController::class, 'showByHealthUnity']);
+Route::apiResource('/healthUnities', HealthUnityController::class);
 
 Route::apiResource('/cities', CityController::class);
 

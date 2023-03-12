@@ -10,4 +10,16 @@ class EloquentPatientRepository extends EloquentBaseRepository implements Patien
     public function __construct(){
         parent::__construct(Patient::class);
     }
+
+    public function getByHealthUnity(int $healthUnityId){
+        return parent::getByRelationship('health_unity_id', $healthUnityId);
+    }
+
+    public function getByBirthplace(int $cityId){
+        return parent::getByRelationship('birthplace_id', $cityId);
+    }
+
+    public function getByDistrict(int $districtId){
+        return parent::getByRelationship('district_id', $districtId);
+    }
 }

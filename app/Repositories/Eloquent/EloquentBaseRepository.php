@@ -1,6 +1,9 @@
 <?php
 namespace App\Repositories\Eloquent;
 
+use App\Models\Patient;
+use Illuminate\Database\Eloquent\Model;
+
 class EloquentBaseRepository{
     protected $model;
 
@@ -14,12 +17,16 @@ class EloquentBaseRepository{
         $this->model = app($modelClass);
     }
 
-    public function read($id){
+    public function getById(int $id){
         return $this->model->find($id);
     }
 
     public function all() {
-        return $this->model->all()->toArray();
+        return $this->model->all();
+    }
+
+    public function allPaginated(int $pageLimit){
+        return $this->model->paginate($pageLimit);
     }
 
     public function create($data) {
@@ -36,5 +43,9 @@ class EloquentBaseRepository{
     
     public function delete($id) {
         $this->model->destroy($id);
+    }
+
+    protected function getByRelationship($foreignKey, $relatedModelId){
+        return $this->model->where($foreignKey, $relatedModelId)->get();
     }
 }

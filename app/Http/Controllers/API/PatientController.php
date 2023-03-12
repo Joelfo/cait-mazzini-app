@@ -4,8 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRequest;
+use App\Models\Patient;
 use App\Services\PatientService;
-
+use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
@@ -14,9 +15,17 @@ class PatientController extends Controller
         
     }
 
-    public function index(){
-        return response()
-            ->json($this->service->index(), 200);
+    public function index(Request $request){
+        $limit = 10;
+        if ($request->filled('limit')){
+            $limit = $request->input('limit');
+            if (is_numeric($request->input('limit'))){
+                $limit = (int) $limit;
+            }
+        }
+        
+        $resultPage = $this->service->index($limit);
+        return response()->json($resultPage, 200);
         
     }
 
@@ -38,6 +47,11 @@ class PatientController extends Controller
 
     public function update(int $id, PatientRequest $request){
         return response()->json($this->service->update($id, $request->all()), 200);
+    }
+
+    public function showByHealthUnity(int $healthUnityId){
+        $patients = $this->service->showByHealthUnity($healthUnityId);
+        return response()->json($patients);
     }
 
 }

@@ -4,7 +4,9 @@ namespace App\Repositories;
 interface BaseRepository {
     public function all();
 
-    public function read($id);
+    public function allPaginated(int $pageLimit);
+
+    public function getById(int $id);
 
     public function create($data);
 

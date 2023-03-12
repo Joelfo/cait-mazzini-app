@@ -9,4 +9,8 @@ class PatientService extends BaseService
     {
         $this->setRepository($repository);  
     }
+
+    public function showByHealthUnity(int $healthUnityId){
+        return $this->repository->getByHealthUnity($healthUnityId);
+    }
 }

@@ -23,14 +23,15 @@ class PatientFactory extends Factory
     
 
     
-    public function configure(): static {
+    /*public function configure(): static {
         return $this->afterMaking(function(Patient $patient){
             if ($patient->arrive == Arrival::Fowarded || $patient->arrive == Arrival::Referenced){
                 $healthUnities = HealthUnity::all();
                 $patient->healthUnity = $healthUnities[random_int(0, count($healthUnities) - 1)];
+                $patient->save();
             }
         });
-    }
+    }*/
 
 
     /**
@@ -42,18 +43,18 @@ class PatientFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'sus_card' => strval(random_int(0, 9999)) + strval(random_int(0, 9999)),
-            'rg' => strval(random_int(0, 9999)) + strval(random_int(0, 9999)) + strval(random_int(0, 9999)),
+            'sus_card' => strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
+            'rg' => strval(random_int(0, 9999)) . strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
             'cpf' => FactoryUtil::generateCpf(),
             'admission_date' => fake()->date(),
             'type' => FactoryUtil::random_enum(Type::class),
             'arrival' => FactoryUtil::random_enum(Arrival::class),
-            'telephone_1' => "9" + strval(random_int(0, 9999)) + strval(random_int(0, 9999)),
-            'telephone_2' => strval(random_int(0, 9999)) + strval(random_int(0, 9999)),
-            'cep' => strval(random_int(0, 9999)) + strval(random_int(0, 9999)),
+            'telephone_1' => "9" . strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
+            'telephone_2' => strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
+            'cep' => strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
             'pregnant' => random_int(0, 1),
             'birth_date' => fake()->date(),
-            'record_code' => strval(random_int(0, 9999)) + strval(random_int(0, 9999)),
+            'record_code' => strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
             'mother_name' => fake()->name(),
             'address' => fake()->address(),
             'birthplace_id' => City::all()->random(),
