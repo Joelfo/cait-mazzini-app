@@ -28,9 +28,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('patients', PatientController::class);
 
-Route::get("/healthUnities/{healthUnityId}/patients", [PatientController::class, 'showByHealthUnity']);
+Route::get("/healthUnities/{healthUnity}/patients", [PatientController::class, 'showByHealthUnity'])
+    ->name('healthUnities.patients');
 Route::apiResource('healthUnities', HealthUnityController::class);
 
+Route::prefix('/cities')->name('cities.')->group(function() 
+{
+    //Route::get('/{cityId}/districts', [DistrictController::class, 'showByCity'])->name('districts');
+    //Route::get('/{cityId}/patients', [PatientController::class, 'showByCity'])->name('patients');
+}
+);
 Route::apiResource('cities', CityController::class);
 
 Route::apiResource('districts', DistrictController::class);

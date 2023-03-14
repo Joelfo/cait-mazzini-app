@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\BaseAPIController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Helper\ControllerHelper;
+use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\PatientRequest;
 use App\Http\Resources\PatientResource;
 use App\Models\Patient;
@@ -14,11 +14,11 @@ use Illuminate\Http\Request;
 class PatientController extends 
 Controller
 {
-    private ControllerHelper $controllerHelper;
+    private CRUDControllerHelper $controllerHelper;
 
     public function __construct(private PatientService $service)
     {
-        $this->controllerHelper = new ControllerHelper($service, PatientResource::class);
+        $this->controllerHelper = new CRUDControllerHelper($service, PatientResource::class);
     }
 
     public function index(Request $request){

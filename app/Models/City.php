@@ -17,4 +17,8 @@ class City extends Model
     public function districts(){
         return $this->hasMany(District::class);
     }
+
+    public function patients(){
+        return $this->hasManyThrough(Patient::class, District::class);
+    }
 }

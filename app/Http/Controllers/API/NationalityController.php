@@ -3,39 +3,38 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\NationalityRequest;
+use App\Http\Resources\NationalityResource;
 use App\Services\NationalityService;
+use Illuminate\Http\Request;
 
 class NationalityController extends Controller
 {
+    public $controllerHelper;
+
     public function __construct(private NationalityService $service)
     {
-        
+        $this->controllerHelper = new CRUDControllerHelper($service, NationalityResource::class);
     }
 
-    public function index(){
-        return response()
-            ->json($this->service->index(), 200);
-        
+    public function index(Request $request){
+        return $this->controllerHelper->index($request);
     }
 
     public function show(int $nationalityId){
-        return response()->json($this->service->show($nationalityId), 200);
+        return $this->controllerHelper->show($nationalityId);
     }
 
     public function store(NationalityRequest $request){
-        return response()
-            ->json($this->service->store($request->all()), 201);
-        
+        return $this->controllerHelper->store($request);    
     }
 
     public function destroy(int $nationalityId){
-        $this->service->destroy($nationalityId);
-        return response()->noContent();
-        
+        return $this->controllerHelper->destroy($nationalityId);
     }
 
     public function update(int $id, NationalityRequest $request){
-        return response()->json($this->service->update($id, $request->all()), 200);
+        return $this->controllerHelper->update($id, $request);
     }
 }

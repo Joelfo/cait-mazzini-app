@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ControllerHelper {
+class CRUDControllerHelper {
     private $service;
     private $resource;
 

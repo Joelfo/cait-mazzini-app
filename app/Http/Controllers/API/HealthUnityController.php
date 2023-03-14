@@ -3,40 +3,38 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\HealthUnityRequest;
+use App\Http\Resources\HealthUnityResource;
 use App\Services\HealthUnityService;
-
+use Illuminate\Http\Request;
 
 class HealthUnityController extends Controller
 {
+    public $controllerHelper;
+
     public function __construct(private HealthUnityService $service)
     {
-        
+        $this->controllerHelper = new CRUDControllerHelper($service, HealthUnityResource::class);
     }
 
-    public function index(){
-        return response()
-            ->json($this->service->index(), 200);
-        
+    public function index(Request $request){
+        return $this->controllerHelper->index($request);
     }
 
     public function show(int $healthUnityId){
-        return response()->json($this->service->show($healthUnityId), 200);
+        return $this->controllerHelper->show($healthUnityId);
     }
 
     public function store(HealthUnityRequest $request){
-        return response()
-            ->json($this->service->store($request->all()), 201);
-        
+        return $this->controllerHelper->store($request);    
     }
 
     public function destroy(int $healthUnityId){
-        $this->service->destroy($healthUnityId);
-        return response()->noContent();
-        
+        return $this->controllerHelper->destroy($healthUnityId);
     }
 
     public function update(int $id, HealthUnityRequest $request){
-        return response()->json($this->service->update($id, $request->all()), 200);
+        return $this->controllerHelper->update($id, $request);
     }
 }
