@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Release extends Model
+class TrackingChart extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'reason', 
-        'additional_info',
+        'date',
+        'schema',
+        'vital_signs_measurement_id',
+        'evolution',
+        'conduct',
         'patient_id'
     ];
 
