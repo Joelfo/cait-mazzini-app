@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('pnt_appointments', function (Blueprint $table) {
             $table->id();
+
+            $table->enum('appointment_type', ['1ª vez', '30/30 dias', '3 meses']);
+
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('pnt_appointments');
     }
 };
