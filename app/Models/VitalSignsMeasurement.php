@@ -19,5 +19,8 @@ class VitalSignsMeasurement extends Model
         'height'
     ];
 
-    
+    public function patient(){
+        return $this->hasOne(Patient::class);
+    }
+
 }

@@ -30,8 +30,10 @@ return new class extends Migration
                 ->constrained()
                 ->nullOnDelete()
                 ->restrictOnUpdate();
-            $table->foreignId('appointment_id');
+
+            $table->bigInteger('appointment');
             $table->string('appointment_type');
+
             
             $table->timestamps();
         });
