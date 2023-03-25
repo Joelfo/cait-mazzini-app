@@ -15,6 +15,6 @@ class PntAppointment extends Model  {
     ];
 
     public function trackingChart(){
-        return $this->morphMany(TrackingChart::class, "appointment");
+        return $this->morphMany(TrackingAppointmentChart::class, "appointment");
     }
 }

@@ -13,20 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vital_signs_measurements', function (Blueprint $table) {
+        Schema::create('patient_exams_charts', function (Blueprint $table) {
             $table->id();
-
-            $table->string('pa_mmhg', 15);
-            $table->string('fc_bpm', 15);
-            $table->string('fr_irpm', 15);
-            $table->string('tax_celsius', 15);
-            $table->string('oxygen_saturation_percentage');
-            $table->date('measurement_date');
-            $table->foreignId('patient_id')
+            $table->foreignId('patient_exam_id')
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
-
+            //polymorphic relationship
+            $table->bigInteger('chart_id');
+            $table->string('chart_type');
             $table->timestamps();
         });
     }
@@ -38,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vital_signs_measurements');
+        Schema::dropIfExists('patient_exams_charts');
     }
 };

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TrackingChart extends Model
+class TrackingAppointmentChart extends Model
 {
     use HasFactory;
 
@@ -21,4 +21,13 @@ class TrackingChart extends Model
     public function patient(){
         return $this->belongsTo(Patient::class);
     }
+
+    public function appointment(){
+        return $this->morphTo();
+    }
+
+    public function patientExams(){
+        return $this->morphToMany(PatientExam::class, 'chart', 'patient_exams_charts');
+    }
+    
 }

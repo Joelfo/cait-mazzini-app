@@ -22,16 +22,17 @@ return new class extends Migration
             $table->text('evolution');
             $table->text('conduct');
 
-            $table->foreignId('patient')
+            $table->foreignId('patient_id')
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
-            $table->foreignId('vital_signs_measurement')
+            $table->foreignId('vital_signs_measurement_id')
+                ->nullable()
                 ->constrained()
                 ->nullOnDelete()
                 ->restrictOnUpdate();
 
-            $table->bigInteger('appointment');
+            $table->bigInteger('appointment_id');
             $table->string('appointment_type');
 
             
