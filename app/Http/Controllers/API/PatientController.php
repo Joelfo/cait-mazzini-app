@@ -7,10 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\PatientRequest;
 use App\Http\Resources\PatientResource;
-use App\Models\Patient;
 use App\Services\PatientService;
 use Illuminate\Http\Request;
-
+use OpenApi\Annotations as OA;
 class PatientController extends 
 Controller
 {
@@ -21,10 +20,14 @@ Controller
         $this->controllerHelper = new CRUDControllerHelper($service, PatientResource::class);
     }
 
+    /**
+     * @OA\Get()
+     */
     public function index(Request $request){
         return $this->controllerHelper->index($request);
     }
-
+  
+   
     public function show(int $patientId){
         return $this->controllerHelper->show($patientId);
     }

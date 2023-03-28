@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: 'My First API'
+  version: '0.1'
+paths:
+  '/api/patients/{patientId}':
+    get:
+      operationId: efc0b667b68329b7162e73de35560807
+      parameters:
+        -
+          parameter: patientId
+          name: sdasdasdass
+          in: null
+          description: 'The id of the patient'
+          required: true
+      responses:
+        '200':
+          description: 'The data'

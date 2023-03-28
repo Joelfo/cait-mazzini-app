@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('tb_appointments', function (Blueprint $table) {
             $table->id();
+
+            $table->enum('appointment_type', ['1ª vez', '28/28 dias', 'Revisão']);
+
             $table->timestamps();
         });
     }
