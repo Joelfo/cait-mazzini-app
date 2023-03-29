@@ -14,6 +14,6 @@ class TbAppointment extends Model {
     ];
 
     public function trackingChart(){
-        return $this->morphMany(TrackingAppointmentChart::class, "appointment");
+        return $this->morphMany(TrackingAppointmentChart::class, 'appointment');
     }   
 }

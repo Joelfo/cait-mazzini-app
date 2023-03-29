@@ -37,7 +37,9 @@ class Patient extends Model
     ];
     
     protected $casts = [
-        'pregnant' => 'boolean'
+        'pregnant' => 'boolean',
+        'admission_date' => 'datetime',
+        'birth_date' => 'datetime'
     ];
 
     public function healthUnity(){

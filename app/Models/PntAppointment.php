@@ -11,7 +11,7 @@ class PntAppointment extends Model  {
     use HasFactory;
 
     protected $fillable = [
-        'appointment_type'
+        "appointment_type"
     ];
 
     public function trackingChart(){

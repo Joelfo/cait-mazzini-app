@@ -21,7 +21,45 @@ Controller
     }
 
     /**
-     * @OA\Get()
+     * @OA\Get(
+     *  path = "/api/patients/{patientId}",
+     *  @OA\Parameter(
+     *    name="patientId",
+     *    in="path",
+     *    required=true
+     *  ),
+     *  @OA\Response(
+     *    response="200",
+     *    description="The searched patient.",
+     *    @OA\JsonContent(
+     *      @OA\Property(property="id", type="number", example="29"),
+     *      @OA\Property(property="name", type="string", example="Moisés"),
+     *      @OA\Property(property="susCard", type="string", example="12345678"),
+     *      @OA\Property(property="rg", type="string", example="123456789"),
+     *      @OA\Property(property="cpf", type="string", example="12345678910"),
+     *      @OA\Property(property="admissionDate", type="string", example="11-11-2020"),
+     *      @OA\Property(property="type", type="string", example="TB"),
+     *      @OA\Property(property="arrival", type="string", example="Referenciado"),
+     *      @OA\Property(property="telephone1", type="string", example="21999999999"),
+     *      @OA\Property(property="telephone2", type="string", example="2155555555"),
+     *      @OA\Property(property="cep", type="string", example="21111050"),
+     *      @OA\Property(property="isPregnant", type="bool", example="false"),
+     *      @OA\Property(property="birthDate", type="string", example="21-02-1954"),
+     *      @OA\Property(property="recordCode", type="string", example="TB99999"),
+     *      @OA\Property(property="motherName", type="string", example="Rute"),
+     *      @OA\Property(property="address", type="string", example="Rua do Nunca, número 999, apartamento 1851"),
+     *      @OA\Property(
+     *        property="links",
+     *        type="array"", 
+     *        @OA\Items(
+     *          @OA\Property(property="self", type="string")
+     *          @OA\Property(property="type", type="string"),
+     *          @OA\Property(property="href", type="string"),
+     *          ))
+     *        )
+     *       
+     *      )
+     *    )))
      */
     public function index(Request $request){
         return $this->controllerHelper->index($request);
