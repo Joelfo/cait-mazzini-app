@@ -35,16 +35,19 @@ class PatientRequest extends FormRequest
             'rg' => ['required', 'numeric','min_digits: 8', 'max_digits: 15'],
             'cpf' => ['required', new Cpf],
             'admission_date' => ['required', 'date_format:Y-m-d'],
-            'type' => ['required', 'numeric', new Enum(Type::class)],
-            'arrive' => ['required', 'numeric', new Enum(Arrival::class)],
-            'telephone_1' => ['required', new Telephone],
+            'type' => ['required'],
+            'arrive' => ['required'],
+            'telephone_1' => ['required', 'numeric', new Telephone],
             'telephone_2' => ['nullable', 'numeric', new Telephone],
             'cep' => ['required', 'numeric'],
             'pregnant' => ['required', 'boolean'],
             'birth_date' => ['required', 'date_format:Y-m-d'],
             'record_code' => ['required', 'size:10'],
             'mother_name' => ['required', 'between:3, 255'],
-            'address' => ['required', 'between:0,255']
+            'address' => ['required', 'between:0,255'],
+            'district.id' => ['required', 'numeric'],
+            'birthplace.id' => ['required', 'numeric'],
+            'nationality.id' => ['required', 'numeric']
         ];
     }
 }

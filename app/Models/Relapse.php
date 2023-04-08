@@ -13,4 +13,5 @@ class Relapse extends Model
         'more_than_six_months',
         'patient_id'
     ];
+
 }

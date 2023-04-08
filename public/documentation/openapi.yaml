@@ -18,21 +18,83 @@ paths:
             application/json:
               schema:
                 properties:
-                  id: { type: number, example: '29' }
-                  name: { type: string, example: Moisés }
-                  susCard: { type: string, example: '12345678' }
-                  rg: { type: string, example: '123456789' }
-                  cpf: { type: string, example: '12345678910' }
-                  admissionDate: { type: string, example: 11/11/2020 }
-                  type: { type: string, example: TB }
-                  arrival: { type: string, example: Referenciado }
-                  telephone1: { type: string, example: '21999999999' }
-                  telephone2: { type: string, example: '2155555555' }
-                  cep: { type: string, example: '21111050' }
-                  isPregnant: { type: boolean, example: 'false' }
-                  birthDate: { type: string, example: 21/02/1954 }
-                  recordCode: { type: string, example: TB99999 }
-                  motherName: { type: string, example: Rute }
-                  address: { type: string, example: 'Rua do Nunca, número 999, apartamento 1851' }
-                  links: { properties: { self: { type: url, example: 'http://localhost/api/patients/29' }, district: { type: url, example: 'http://localhost/api/districts/4' }, healthUnity: { type: url, example: 'http://localhost/api/healthUnities/15' } }, type: object }
+                  data: { $ref: '#/components/schemas/Patient' }
                 type: object
+components:
+  schemas:
+    Patient:
+      description: 'A Patient of CAIT Mazzini Bueno'
+      properties:
+        id:
+          type: number
+          example: '29'
+        name:
+          type: string
+          example: Moisés
+        susCard:
+          type: string
+          example: '12345678'
+        rg:
+          type: string
+          example: '123456789'
+        cpf:
+          type: string
+          example: '12345678910'
+        admissionDate:
+          type: string
+          example: 11-11-2020
+        type:
+          type: string
+          example: TB
+        arrival:
+          type: string
+          example: Referenciado
+        telephone1:
+          type: string
+          example: '21999999999'
+        telephone2:
+          type: string
+          example: '2155555555'
+        cep:
+          type: string
+          example: '21111050'
+        isPregnant:
+          type: boolean
+          example: 'false'
+        birthDate:
+          type: string
+          example: 21-02-1954
+        recordCode:
+          type: string
+          example: TB99999
+        motherName:
+          type: string
+          example: Rute
+        address:
+          type: string
+          example: 'Rua do Nunca, número 999, apartamento 1851'
+        _links:
+          type: array
+          items:
+            properties:
+              rel:
+                type: string
+              type:
+                type: string
+              href:
+                type: string
+            type: object
+          example:
+            -
+              rel: self
+              type: get
+              href: 'http://localhost:8000/api/patients/29'
+            -
+              rel: district
+              type: get
+              href: 'http://localhost:8000/api/districts/3'
+            -
+              rel: healthUnity
+              type: get
+              href: 'http://localhost:8000/api/healthUnities/2'
+      type: object

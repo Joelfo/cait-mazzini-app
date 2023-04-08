@@ -20,8 +20,9 @@ class PatientHateoas
         return $this->link('districts.show', ['district' => $patient->district]);
     }
 
-    public function healthUnity(Patient $patient) : ?Link
+
+    public function nationality(Patient $patient) : ?Link
     {
-        return $this->link('healthUnities.show', ['healthUnity' => $patient->district]);
+        return $this->link('nationalities.show', ['nationality' => $patient->nationality]);
     }
 }

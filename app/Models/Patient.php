@@ -8,7 +8,30 @@ use App\Models\HealthUnity;
 use App\Models\Nationality;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Schema(
+ *   schema="Patient",
+ *   description="Um modelo de paciente",
+ *   @OA\Property(property="id", type="number", example="29"),
+ *   @OA\Property(property="name", type="string", example="Moisés"),
+ *   @OA\Property(property="susCard", type="string", example="12345678"),
+ *   @OA\Property(property="rg", type="string", example="123456789"),
+ *   @OA\Property(property="cpf", type="string", example="12345678910"),
+ *   @OA\Property(property="admissionDate", type="string", example="11-11-2020"),
+ *   @OA\Property(property="type", type="string", example="TB"),
+ *   @OA\Property(property="arrival", type="string", example="Referenciado"),
+ *   @OA\Property(property="telephone1", type="string", example="21999999999"),
+ *   @OA\Property(property="telephone2", type="string", example="2155555555"),
+ *   @OA\Property(property="cep", type="string", example="21111050"),
+ *   @OA\Property(property="isPregnant", type="bool", example="false"),
+ *   @OA\Property(property="birthDate", type="string", example="21-02-1954"),
+ *   @OA\Property(property="recordCode", type="string", example="TB99999"),
+ *   @OA\Property(property="motherName", type="string", example="Rute"),
+ *   @OA\Property(property="address", type="string", example="Rua do Nunca, número 999, apartamento 1851"),
+ * )
+ */
 class Patient extends Model
 {
     use HasFactory;
@@ -28,12 +51,7 @@ class Patient extends Model
         'birth_date', 
         'record_code', 
         'mother_name', 
-        'address',
-        'health_unity_id',
-        'district_id',
-        'nationality_id',
-        'birthplace_id',
-
+        'address'
     ];
     
     protected $casts = [

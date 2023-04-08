@@ -1,5 +1,5 @@
 <?php 
 
 return [
-    "sources" => ["app/Http/Controllers/"]
+    "sources" => ["app/"]
 ];
