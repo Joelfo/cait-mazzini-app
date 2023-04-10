@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTOs\PatientDTO;
 use App\Http\Controllers\BaseAPIController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
@@ -9,6 +10,7 @@ use App\Http\Requests\PatientRequest;
 use App\Http\Resources\PatientResource;
 use App\Models\City;
 use App\Models\District;
+use App\Models\HealthUnity;
 use App\Models\Nationality;
 use App\Models\Patient;
 use App\Services\PatientService;
@@ -87,14 +89,17 @@ Controller
      * )))
      */
     public function store(PatientRequest $request){
-        $patient = new Patient();
-        $patient->fill($request->all());
-        $patient->district()->associate((new District())->fill($request->district));
-        $patient->birthplace()->associate((new City())->fill($request->birthplace));
-        $patient->nationality()->associate((new Nationality())->fill($request->nationality));
-        $patient->save();
-        return response('', 205);
-        //return $this->controllerHelper->store($request);    
+        //$patient = new Patient();
+       // $patient->fill($request->all());
+        //return response()->json($patient);
+        //$patient->district()->associate((new District())->fill($request->district));
+        //$patient->birthplace()->associate((new City())->fill($request->birthplace));
+        //$patient->nationality()->associate((new Nationality())->fill($request->nationality));
+        //if ($request->health_unity != null)
+           // $patient->healthUnity()->associate((new HealthUnity())->fill($request->health_unity));
+        //$patient->save();
+        //return response('', 205);
+        return $this->controllerHelper->store($request);    
     }
 
     public function destroy(int $patientId){

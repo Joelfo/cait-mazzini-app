@@ -51,7 +51,10 @@ class Patient extends Model
         'birth_date', 
         'record_code', 
         'mother_name', 
-        'address'
+        'address',
+        'district',
+        'birthplace',
+        'nationality'
     ];
     
     protected $casts = [

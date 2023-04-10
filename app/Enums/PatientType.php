@@ -1,7 +1,7 @@
 <?php
 namespace App\Enums;
 
-enum Type: string {
+enum PatientType: string {
     case TB = "TB";
     case PNT = "PNT";
     case Chemoprofilaxys = "Quimioprofilaxia";

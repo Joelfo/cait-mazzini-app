@@ -28,8 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('patients', PatientController::class);
 
-Route::get("/healthUnities/{healthUnity}/patients", [PatientController::class, 'showByHealthUnity'])
-    ->name('healthUnities.patients');
+//Route::get("/healthUnities/{healthUnity}/patients", [PatientController::class, 'showByHealthUnity'])
+    //->name('healthUnities.patients');
 Route::apiResource('healthUnities', HealthUnityController::class);
 
 Route::prefix('/cities')->name('cities.')->group(function() 

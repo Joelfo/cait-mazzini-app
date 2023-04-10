@@ -20,6 +20,16 @@ class PatientHateoas
         return $this->link('districts.show', ['district' => $patient->district]);
     }
 
+    public function healthUnity(Patient $patient) : ?Link
+    {
+        if ($patient->healthUnity == null){
+            $param = 0;
+        }
+        else {
+            $param = $patient->healthUnity;
+        }
+        return $this->link('healthUnities.show', ['healthUnity' => $param]);
+    }
 
     public function nationality(Patient $patient) : ?Link
     {
