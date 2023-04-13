@@ -88,7 +88,7 @@ Controller
      *      @OA\Property(property="data", ref="#/components/schemas/Patient")
      * )))
      */
-    public function store(PatientRequest $request){
+    public function store(PatientDTO $patientDTO){
         //$patient = new Patient();
        // $patient->fill($request->all());
         //return response()->json($patient);
@@ -99,15 +99,15 @@ Controller
            // $patient->healthUnity()->associate((new HealthUnity())->fill($request->health_unity));
         //$patient->save();
         //return response('', 205);
-        return $this->controllerHelper->store($request);    
+        return $this->controllerHelper->store($patientDTO);    
     }
 
     public function destroy(int $patientId){
         return $this->controllerHelper->destroy($patientId);
     }
 
-    public function update(int $id, PatientRequest $request){
-        return $this->controllerHelper->update($id, $request);
+    public function update(int $id, PatientDTO $patientDTO){
+        return $this->controllerHelper->update($id, $patientDTO);
     }
 
     public function showByHealthUnity(int $healthUnityId){

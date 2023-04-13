@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTOs\HealthUnityDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\HealthUnityRequest;
@@ -26,15 +27,15 @@ class HealthUnityController extends Controller
         return $this->controllerHelper->show($healthUnityId);
     }
 
-    public function store(HealthUnityRequest $request){
-        return $this->controllerHelper->store($request);    
+    public function store(HealthUnityDTO $healthUnityDTO){
+        return $this->controllerHelper->store($healthUnityDTO);    
     }
 
     public function destroy(int $healthUnityId){
         return $this->controllerHelper->destroy($healthUnityId);
     }
 
-    public function update(int $id, HealthUnityRequest $request){
-        return $this->controllerHelper->update($id, $request);
+    public function update(int $id, HealthUnityDTO $healthUnityDTO){
+        return $this->controllerHelper->update($id, $healthUnityDTO);
     }
 }

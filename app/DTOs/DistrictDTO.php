@@ -9,7 +9,7 @@ class DistrictDTO extends Data {
     public function __construct(
         #[Vld\Numeric, Vld\Required]
         public readonly int $id,
-        #[Vld\Required]
+        #[Vld\Required, Vld\Between(3, 255)]
         public readonly string $name,
         #[Vld\Required]
         public readonly CityDTO $city

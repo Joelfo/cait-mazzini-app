@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
+use App\DTOs\CityDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\CityRequest;
@@ -25,15 +27,15 @@ class CityController extends Controller
         return $this->controllerHelper->show($cityId);
     }
 
-    public function store(CityRequest $request){
-        return $this->controllerHelper->store($request);    
+    public function store(CityDTO $cityDTO){
+        return $this->controllerHelper->store($cityDTO);    
     }
 
     public function destroy(int $cityId){
         return $this->controllerHelper->destroy($cityId);
     }
 
-    public function update(int $id, CityRequest $request){
-        return $this->controllerHelper->update($id, $request);
+    public function update(int $id, CityDTO $cityDTO){
+        return $this->controllerHelper->update($id, $cityDTO);
     }
 }

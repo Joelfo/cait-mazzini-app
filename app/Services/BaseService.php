@@ -24,12 +24,12 @@ class BaseService {
         return $this->repository->getById($id);
     }
 
-    public function store(array $data){
-        return $this->repository->create($data);
+    public function store($dto){
+        return $this->repository->create($dto);
     }
 
-    public function update(int $id, array $data){
-        return $this->repository->update($id, $data);
+    public function update($data){
+        return $this->repository->update($data);
     }
 
     public function destroy(int $id){

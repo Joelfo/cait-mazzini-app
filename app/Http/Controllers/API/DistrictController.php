@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTOs\DistrictDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\DistrictRequest;
@@ -26,15 +27,15 @@ class DistrictController extends Controller
         return $this->controllerHelper->show($districtId);
     }
 
-    public function store(DistrictRequest $request){
-        return $this->controllerHelper->store($request);    
+    public function store(DistrictDTO $districtDTO){
+        return $this->controllerHelper->store($districtDTO);    
     }
 
     public function destroy(int $districtId){
         return $this->controllerHelper->destroy($districtId);
     }
 
-    public function update(int $id, DistrictRequest $request){
-        return $this->controllerHelper->update($id, $request);
+    public function update(int $id, DistrictDTO $districtDTO){
+        return $this->controllerHelper->update($id, $districtDTO);
     }
 }

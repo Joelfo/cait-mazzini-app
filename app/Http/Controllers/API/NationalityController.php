@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTOs\NationalityDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Requests\NationalityRequest;
@@ -26,15 +27,15 @@ class NationalityController extends Controller
         return $this->controllerHelper->show($nationalityId);
     }
 
-    public function store(NationalityRequest $request){
-        return $this->controllerHelper->store($request);    
+    public function store(NationalityDTO $nationalityDTO){
+        return $this->controllerHelper->store($nationalityDTO);    
     }
 
     public function destroy(int $nationalityId){
         return $this->controllerHelper->destroy($nationalityId);
     }
 
-    public function update(int $id, NationalityRequest $request){
-        return $this->controllerHelper->update($id, $request);
+    public function update(int $id, NationalityDTO $nationalityDTO){
+        return $this->controllerHelper->update($id, $nationalityDTO);
     }
 }

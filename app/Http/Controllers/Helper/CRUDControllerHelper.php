@@ -34,8 +34,8 @@ class CRUDControllerHelper {
         return new $this->resource($model);
     }
 
-    public function store($request){
-        $model = $this->service->store($request->all());
+    public function store($dto){
+        $model = $this->service->store($dto);
         return new $this->resource($model);     
     }
 
@@ -45,8 +45,8 @@ class CRUDControllerHelper {
         
     }
 
-    public function update(int $id, $request){
-        $updatedModel = $this->service->update($id, $request->all());
+    public function update($dto){
+        $updatedModel = $this->service->update($dto);
         return new $this->resource($updatedModel);
     }
 }
