@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+
+use App\DTOs\Interfaces\EloquentModelCastable;
 use App\Repositories\BaseRepository;
 
 class BaseService {
@@ -24,12 +26,13 @@ class BaseService {
         return $this->repository->getById($id);
     }
 
-    public function store($dto){
-        return $this->repository->create($dto);
+    public function store(EloquentModelCastable $dto){
+        return $this->repository->create($dto->toModelArray());
     }
 
-    public function update($data){
-        return $this->repository->update($data);
+    public function update(EloquentModelCastable $dto){
+        $model->fill($);
+        return $this->repository->update($dto->toModelArray());
     }
 
     public function destroy(int $id){

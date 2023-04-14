@@ -16,7 +16,7 @@ class HealthUnityDTO {
     {
     }
 
-    public function toArray()
+    public function toModelArray()
     {
         return [
             'id' => $this->id,

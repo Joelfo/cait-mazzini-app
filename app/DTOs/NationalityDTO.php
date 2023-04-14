@@ -13,7 +13,7 @@ class NationalityDTO {
     {
     }
 
-    public function toArray()
+    public function toModelArray()
     {
         return [
             'id' => $this->id,

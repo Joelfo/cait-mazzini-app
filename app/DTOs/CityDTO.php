@@ -14,4 +14,10 @@ class CityDTO extends Data{
     {
     }
 
+    public function toModelArray(){
+        return [
+            'id' => $this->id,
+            'name' => $this->name
+        ];
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\DTOs;
 
+use App\DTOs\Interfaces\EloquentModelCastable;
 use App\Enums\Arrival;
 use App\Enums\PatientType;
 use App\Http\Requests\PatientRequest;
@@ -9,8 +10,9 @@ use App\Models\Nationality;
 use App\Rules\LaravelData as CustomVld;
 
 use Spatie\LaravelData\Attributes\Validation as Vld;
+use Spatie\LaravelData\Data;
 
-class PatientDTO {
+class PatientDTO extends Data implements EloquentModelCastable {
     public function __construct(
         #[Vld\Numeric]
         public readonly int $id,
@@ -53,7 +55,7 @@ class PatientDTO {
     {
     }
 
-    public function toArray()
+    public function toModelArray()
     {
         return [
             'id' => $this->id,
@@ -70,10 +72,10 @@ class PatientDTO {
             'is_pregnant' => $this->isPregnant,
             'birth_date' => $this->birthDate,
             'mother_name' => $this->motherName,
-            'district' => $this->district->toArray(), 
-            'birthplace' => $this->birthplace->toArray(),
-            'nationality' => $this->nationality->toArray(),
-            'healthUnity' => $this->healthUnity->toArray()
+            'district' => $this->district->toModelArray(), 
+            'birthplace' => $this->birthplace->toModelArray(),
+            'nationality' => $this->nationality->toModelArray(),
+            'healthUnity' => $this->healthUnity->toModelArray()
         ];
     }
 }

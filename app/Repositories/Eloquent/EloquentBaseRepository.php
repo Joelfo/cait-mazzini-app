@@ -34,9 +34,7 @@ class EloquentBaseRepository{
         return $createdModel;
     }
 
-    public function update($id, $data) { 
-        $model = $this->model->find($id);
-        $model->fill($data);
+    public function update($model) { 
         $model->save();
         return $model;
     }
