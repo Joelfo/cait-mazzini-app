@@ -10,17 +10,20 @@ class VitalSignsMeasurement extends Model
     use HasFactory;
 
     public $fillable = [
-        'date',
-        'patient_id',
-        'pa',
-        'fc',
-        'oxygen_saturation',
-        'weight',
-        'height'
+        'datetime',
+        'pa_mmhg',
+        'fc_bpm',
+        'fr_irpm',
+        'tax_celsius',
+        'oxygen_saturation_percentage',
+        'weight_kg',
+        'height_m',
+        'patient_id'
     ];
 
     public function patient(){
         return $this->hasOne(Patient::class);
     }
+
 
 }

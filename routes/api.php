@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AppointmentController;
 use App\Http\Controllers\API\CityController;
 use App\Http\Controllers\API\DistrictController;
 use App\Http\Controllers\API\HealthUnityController;
@@ -7,9 +8,12 @@ use App\Http\Controllers\API\NationalityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PatientController;
+use App\Http\Controllers\API\PatientExamController;
 use App\Http\Controllers\API\RelapseController;
 use App\Http\Controllers\API\ReleaseController;
+use App\Http\Controllers\API\TrackingAppointmentChartController;
 use App\Http\Controllers\API\UserController;
+use App\Models\VitalSignsMeasurement;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +32,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('patients', PatientController::class);
 
-//Route::get("/healthUnities/{healthUnity}/patients", [PatientController::class, 'showByHealthUnity'])
-    //->name('healthUnities.patients');
+Route::get('/healthUnities/{healthUnityId}/patients', [PatientController::class, 'showByHealthUnity'])
+    ->name('healthUnities.patients');
 Route::apiResource('healthUnities', HealthUnityController::class);
 
 Route::prefix('/cities')->name('cities.')->group(function() 
@@ -49,3 +53,11 @@ Route::apiResource('relapses', RelapseController::class);
 Route::apiResource('releases', ReleaseController::class);
 
 Route::apiResource('users', UserController::class);
+
+Route::get('/trackingAppointmentCharts/{chartId}/patientExams', [PatientExamController::class, 'showByChart'])
+    ->name('trackingAppointmentCharts.patientExams');
+Route::apiResource('trackingAppointmentCharts', TrackingAppointmentChartController::class);
+
+Route::apiResource('vitalSignsMeasurements', VitalSignsMeasurement::class)->except(['post', 'put']);
+
+Route::apiResource('appointments', AppointmentController::class)->except(['post', 'put']);

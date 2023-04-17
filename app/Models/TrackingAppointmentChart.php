@@ -30,4 +30,7 @@ class TrackingAppointmentChart extends Model
         return $this->morphToMany(PatientExam::class, 'chart', 'patient_exams_charts');
     }
     
+    public function vitalSignsMeasurement(){
+        return $this->belongsTo(VitalSignsMeasurement::class);
+    }
 }

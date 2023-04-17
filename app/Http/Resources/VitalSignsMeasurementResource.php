@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use GDebrauwer\Hateoas\Traits\HasLinks;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class NationalityResource extends JsonResource
+class VitalSignsMeasurementResource extends JsonResource
 {
     use HasLinks;
     /**
@@ -18,7 +18,12 @@ class NationalityResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'pa' => $this->pa,
+            'fc' => $this->fc,
+            'oxygenSaturation' => $this->oxygen_saturation,
+            'weight' => $this->weight,
+            'height' => $this->height,
+            'datetime' => $this->datetime,
             '_links' => $this->links()
         ];
     }

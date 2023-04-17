@@ -9,6 +9,6 @@ use Attribute;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class Arrive extends ValidationRule{
     public function getRules(){
-        return [new Rules\Arrive];
+        return [new Arrive()];
     }
 }

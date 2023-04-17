@@ -25,25 +25,37 @@ class EloquentBaseRepository{
         return $this->model->all();
     }
 
-    public function allPaginated(int $pageLimit){
+    public function allPaginated(int $pageLimit)
+    {
         return $this->model->paginate($pageLimit);
     }
 
-    public function create($data) {
-        $createdModel = $this->model->create($data);
-        return $createdModel;
+    public function create($data) 
+    {
+        $this->model->create($data);
     }
 
-    public function update($model) { 
-        $model->save();
-        return $model;
+    public function update($id, $modelData) 
+    { 
+        $modelToSave = $this->model->find($id);
+        $modelToSave->fill($modelData);
+        $modelToSave->save();
+        return $modelToSave;
     }
     
-    public function delete($id) {
+    public function delete($id) 
+    {
         $this->model->destroy($id);
     }
 
-    protected function getByRelationship($foreignKey, $relatedModelId){
+    protected function getByBelongsToRelationship($foreignKey, $relatedModelId)
+    {
         return $this->model->where($foreignKey, $relatedModelId)->get();
     }
+
+    protected function getByManyToManyRelationship($relationship, $foreignKey, $relatedModelId)
+    {
+        return $this->model->whereRelation($relationship, $foreignKey, $relatedModelId);
+    }
+
 }

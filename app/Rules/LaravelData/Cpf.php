@@ -9,6 +9,6 @@ use Attribute;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class Cpf extends ValidationRule{
     public function getRules(){
-        return [new Rules\Cpf];
+        return [new Cpf()];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum Arrival: string
+enum Arrival : string
 {
     case Fowarded = 'Encaminhado';
     case Referenced = 'Referenciado';

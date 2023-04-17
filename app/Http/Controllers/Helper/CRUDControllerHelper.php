@@ -36,7 +36,7 @@ class CRUDControllerHelper {
 
     public function store($dto){
         $model = $this->service->store($dto);
-        return new $this->resource($model);     
+        return response(status: 201);  
     }
 
     public function destroy(int $modelId){
@@ -45,8 +45,8 @@ class CRUDControllerHelper {
         
     }
 
-    public function update($dto){
-        $updatedModel = $this->service->update($dto);
+    public function update($id, $dto){
+        $updatedModel = $this->service->update($id, $dto);
         return new $this->resource($updatedModel);
     }
 }

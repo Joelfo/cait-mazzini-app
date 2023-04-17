@@ -52,9 +52,10 @@ class Patient extends Model
         'record_code', 
         'mother_name', 
         'address',
-        'district',
-        'birthplace',
-        'nationality'
+        'district_id',
+        'birthplace_id',
+        'nationality_id',
+        'health_unity_id'
     ];
     
     protected $casts = [

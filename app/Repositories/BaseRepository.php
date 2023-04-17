@@ -12,5 +12,5 @@ interface BaseRepository {
 
     public function delete($id);
 
-    public function update($data);
+    public function update($id, $data);
 }

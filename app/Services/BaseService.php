@@ -8,6 +8,10 @@ use App\Repositories\BaseRepository;
 class BaseService {
     protected $repository;
 
+    public function __construct(BaseRepository $repository){
+        $this->setRepository($repository);
+    }
+
     /**
      * @param mixed|BaseRepository $repository
      */
@@ -27,12 +31,11 @@ class BaseService {
     }
 
     public function store(EloquentModelCastable $dto){
-        return $this->repository->create($dto->toModelArray());
+        $this->repository->create($dto->toModelArray());
     }
 
-    public function update(EloquentModelCastable $dto){
-        $model->fill($);
-        return $this->repository->update($dto->toModelArray());
+    public function update($id, EloquentModelCastable $dto){
+        return $this->repository->update($id, $dto->toModelArray());
     }
 
     public function destroy(int $id){

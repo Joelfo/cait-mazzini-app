@@ -1,14 +1,13 @@
 <?php
 namespace App\DTOs;
 
+use App\DTOs\Interfaces\EloquentModelCastable;
 use Spatie\LaravelData\Attributes\Validation as Vld;
 use Spatie\LaravelData\Data;
-class CityDTO extends Data{
+class CityDTO extends Data implements EloquentModelCastable{
 
     public function __construct(
-        #[Vld\Numeric]
-        public readonly int $id,
-        #[Vld\Required, Vld\Between]
+        #[Vld\Required, Vld\Between(3, 255)]
         public readonly string $name
     )
     {
@@ -16,7 +15,6 @@ class CityDTO extends Data{
 
     public function toModelArray(){
         return [
-            'id' => $this->id,
             'name' => $this->name
         ];
     }
