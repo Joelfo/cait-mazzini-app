@@ -10,6 +10,7 @@ class PatientExam extends Model
     use HasFactory;
     protected $fillable = [
         'file_path',
+        'date',
         'patient_id'
     ];
 
