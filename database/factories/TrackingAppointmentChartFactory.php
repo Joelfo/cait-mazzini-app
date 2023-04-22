@@ -11,13 +11,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TrackingAppointmentChartFactory extends Factory
 {
-    public function __construct(
-        public VitalSignsMeasurementRepository $vitalSignsMeasurementRepository,
-        public PatientRepository $patientRepository
-        )
-    {
-        
-    }
 
     /**
      * Define the model's default state.
@@ -30,9 +23,7 @@ class TrackingAppointmentChartFactory extends Factory
             'date' => fake()->date('d/m/Y'),
             'schema' => fake()->date('d/m/Y'),
             'evolution' => fake()->text(400),
-            'conduct' => fake()->text(250),
-            'patient_id' => $this->patientRepository->all(),
-            'vital_signs_measurement_id' => $this->vitalSignsMeasurementRepository->all()->random()
+            'conduct' => fake()->text(250)
         ];
     }
 }

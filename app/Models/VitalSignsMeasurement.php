@@ -25,5 +25,8 @@ class VitalSignsMeasurement extends Model
         return $this->hasOne(Patient::class);
     }
 
+    public function TrackingAppointmentChart(){
+        return $this->hasMany(TrackingAppointmentChart::class);
+    }
 
 }

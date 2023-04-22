@@ -12,10 +12,10 @@ class TrackingAppointmentChart extends Model
     protected $fillable = [
         'date',
         'schema',
-        'vital_signs_measurement_id',
         'evolution',
         'conduct',
-        'patient_id'
+        'patient_id',
+        'vital_signs_measurement_id'
     ];
 
     public function patient(){

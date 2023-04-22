@@ -88,6 +88,14 @@ class Patient extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function patientExams(){
+        return $this->hasMany(PatientExam::class);
+    }
+
+    public function vitalSignsMeasurements(){
+        return $this->hasMany(VitalSignsMeasurement::class);
+    }
+
     protected static function booted(){
         self::addGlobalScope('alphabeticOrdered', function(Builder $queryBuilder){
             $queryBuilder->orderBy('name');
