@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Interfaces\IAppointment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,12 +11,13 @@ class TrackingAppointmentChart extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date',
+        'type',
         'schema',
         'evolution',
         'conduct',
-        'patient_id',
-        'vital_signs_measurement_id'
+        'appointment_id',
+        'vital_signs_measurement_id',
+        'patient_id'
     ];
 
     public function patient(){

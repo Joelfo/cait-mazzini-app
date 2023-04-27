@@ -14,6 +14,7 @@ class HealthUnity extends Model
         'name'
     ];
 
+    public $timestamps = false;
     
 
     public function patients(){

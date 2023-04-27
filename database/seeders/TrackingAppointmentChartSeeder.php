@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Patient;
+use App\Models\PatientExam;
+use App\Models\TbAppointment;
 use App\Models\TrackingAppointmentChart;
+use App\Models\VitalSignsMeasurement;
 use App\Repositories\PatientExamRepository;
 use App\Repositories\PatientRepository;
 use App\Repositories\TBAppointmentRepository;
@@ -12,15 +16,8 @@ use Illuminate\Database\Seeder;
 
 class TrackingAppointmentChartSeeder extends Seeder
 {
-    public function __construct(
-        private TBAppointmentRepository $tbAppointmentRepository,
-        private PatientExamRepository $patientExamRepository,
-        private VitalSignsMeasurementRepository $vitalSignsMeasurementRepository,
-        private PatientRepository $patientRepository
-    )
-    {
 
-    }
+    
     /**
      * Run the database seeds.
      *
@@ -28,15 +25,15 @@ class TrackingAppointmentChartSeeder extends Seeder
      */
     public function run()
     {
-        $patient = $this->patientRepository->all()->random();
+        $patient = Patient::all()->random();
+        $tbAppointment = TbAppointment::factory()->create(['patient_id' => $patient->id]);
+        $vitalSignsMeasurement = VitalSignsMeasurement::factory()->create(['patient_id' => $patient->id]);
         TrackingAppointmentChart::factory()
             ->count(1)
-            ->for($this->tbAppointmentRepository->getById(1))
-            ->for($this->vitalSignsMeasurementRepository, 'chart')
-            ->for($patient)
-            ->for($patient->vitalSignsMeasurements->random())
-            ->has($patient->patientExams->random());
-
-            
+            ->for(TbAppointment::factory()->state(['patient_id' => $patient->id]), 'appointment')
+            ->create([
+                'patient_id' => $patient->id,
+                'vital_signs_measurement_id' => $vitalSignsMeasurement->id,
+            ]);         
     }
 }

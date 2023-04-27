@@ -10,7 +10,7 @@ class VitalSignsMeasurement extends Model
     use HasFactory;
 
     public $fillable = [
-        'datetime',
+        'measurement_date_time',
         'pa_mmhg',
         'fc_bpm',
         'fr_irpm',
@@ -22,7 +22,7 @@ class VitalSignsMeasurement extends Model
     ];
 
     public function patient(){
-        return $this->hasOne(Patient::class);
+        return $this->belongsTo(Patient::class);
     }
 
     public function TrackingAppointmentChart(){

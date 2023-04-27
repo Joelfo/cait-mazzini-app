@@ -16,12 +16,15 @@ return new class extends Migration
         Schema::create('vital_signs_measurements', function (Blueprint $table) {
             $table->id();
 
-            $table->string('pa_mmhg', 15);
-            $table->string('fc_bpm', 15);
-            $table->string('fr_irpm', 15);
-            $table->string('tax_celsius', 15);
-            $table->string('oxygen_saturation_percentage');
-            $table->date('measurement_date');
+            $table->text('pa_mmhg');
+            $table->text('fc_bpm');
+            $table->text('fr_irpm');
+            $table->text('tax_celsius');
+            $table->text('oxygen_saturation_percentage');
+            $table->text('weight_kg');
+            $table->text('height_m');
+            $table->datetime('measurement_date_time');
+
             $table->foreignId('patient_id')
                 ->constrained()
                 ->cascadeOnDelete()

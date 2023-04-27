@@ -22,7 +22,6 @@ return new class extends Migration
                 ->constrained()
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
-            $table->timestamps();
         });
     }
 

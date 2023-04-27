@@ -18,6 +18,12 @@ return new class extends Migration
 
             $table->enum('appointment_type', ['1ª vez', '28/28 dias', 'Revisão']);
 
+            $table->foreignId('patient_id')
+            ->constrained()
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+            
+
             $table->timestamps();
         });
     }

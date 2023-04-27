@@ -15,6 +15,6 @@ class PntAppointmentSeeder extends Seeder
      */
     public function run()
     {
-        TbAppointment::factory()->count(1);
+        TbAppointment::factory()->count(1)->create();
     }
 }

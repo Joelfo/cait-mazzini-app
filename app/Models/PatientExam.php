@@ -18,7 +18,7 @@ class PatientExam extends Model
         return $this->hasOne(Patient::class);
     }
 
-    public function trackingCharts(){
+    public function charts(){
         return $this->morphedByMany(TrackingAppointmentChart::class, 'chart', 'patient_exams_charts');
     }
 

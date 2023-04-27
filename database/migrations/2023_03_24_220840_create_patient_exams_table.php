@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('patient_exams', function (Blueprint $table) {
             $table->id();
+
+            $table->text('file_path');
+
+            $table->date('date');
+
+            $table->foreignId("patient_id")
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }

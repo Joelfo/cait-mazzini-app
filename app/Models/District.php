@@ -13,6 +13,7 @@ class District extends Model
         'city_id'
     ];
 
+    public $timestamps = false;
    
     public function city()
     {

@@ -20,8 +20,8 @@ class TrackingAppointmentChartFactory extends Factory
     public function definition()
     {
         return [
-            'date' => fake()->date('d/m/Y'),
-            'schema' => fake()->date('d/m/Y'),
+            'date' => fake()->date(),
+            'schema' => fake()->date(),
             'evolution' => fake()->text(400),
             'conduct' => fake()->text(250)
         ];

@@ -5,13 +5,14 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Services\BaseService;
+use App\Services\TbAppointmentService;
 use Illuminate\Http\Request;
 
-class TbAppointment extends Controller
+class TbAppointmentController extends Controller
 {
     public $controllerHelper;
 
-    public function __construct(private BaseService $service)
+    public function __construct(private TbAppointmentService $service)
     {
         $this->controllerHelper = new CRUDControllerHelper($service, TbAppointmentResource::class);
     }

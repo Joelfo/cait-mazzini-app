@@ -18,12 +18,13 @@ class VitalSignsMeasurementResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'pa' => $this->pa,
-            'fc' => $this->fc,
-            'oxygenSaturation' => $this->oxygen_saturation,
-            'weight' => $this->weight,
-            'height' => $this->height,
-            'datetime' => $this->datetime,
+            'paMmhg' => $this->pa_mmhg,
+            'fcBpm' => $this->fc_bpm,
+            'frIrpm' => $this->fr_irpm,
+            'oxygenSaturationPercentage' => $this->oxygen_saturation_percentage,
+            'weightKg' => $this->weight,
+            'heightM' => $this->height,
+            'MeasurementDateTime' => $this->measurement_date_time,
             '_links' => $this->links()
         ];
     }

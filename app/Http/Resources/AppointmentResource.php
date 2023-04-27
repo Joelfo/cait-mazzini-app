@@ -2,10 +2,12 @@
 
 namespace App\Http\Resources;
 
+use GDebrauwer\Hateoas\Traits\HasLinks;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppointmentResource extends JsonResource
 {
+    use HasLinks;
     /**
      * Transform the resource into an array.
      *
@@ -14,6 +16,10 @@ class AppointmentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'appointment_type' => $this->appointment_type,
+            'date' => $this->date,
+            '_links' => $this->links()
+        ];
     }
 }

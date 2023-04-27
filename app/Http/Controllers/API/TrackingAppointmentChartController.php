@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
+use App\Http\Resources\TrackingAppointmentChartResource;
 use App\Services\TrackingAppointmentChartService;
 use Illuminate\Http\Request;
 

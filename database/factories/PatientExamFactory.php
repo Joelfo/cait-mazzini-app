@@ -10,12 +10,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PatientExamFactory extends Factory
 {
-    public function __construct(
-        private PatientRepository $patientRepository
-    )
-    {
-        
-    }
     /**
      * Define the model's default state.
      *
@@ -25,8 +19,7 @@ class PatientExamFactory extends Factory
     {
         return [
             'file_path' => fake()->filePath(),
-            'date' => fake()->date('d/m/Y'),
-            'patient_id' => $this->patientRepository->all()->random()
+            'date' => fake()->date('d/m/Y')
         ];
     }
 }

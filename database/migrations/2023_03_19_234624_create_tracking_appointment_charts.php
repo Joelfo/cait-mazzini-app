@@ -14,18 +14,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tracking_appointment_chart', function (Blueprint $table) {
+        Schema::create('tracking_appointment_charts', function (Blueprint $table) {
             $table->id();
+            
+            $table->enum('type', ['Médica', 'De Enfermagem']);
 
-            $table->dateTime('date');
+            $table->date('date');
+
             $table->text('schema');
+
             $table->text('evolution');
+
             $table->text('conduct');
 
             $table->foreignId('patient_id')
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+
             $table->foreignId('vital_signs_measurement_id')
                 ->nullable()
                 ->constrained()
@@ -33,6 +39,7 @@ return new class extends Migration
                 ->restrictOnUpdate();
 
             $table->bigInteger('appointment_id');
+
             $table->string('appointment_type');
 
             

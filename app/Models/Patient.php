@@ -96,6 +96,14 @@ class Patient extends Model
         return $this->hasMany(VitalSignsMeasurement::class);
     }
 
+    public function TbAppointments(){
+        return $this->hasMany(TbAppointment::class);
+    }
+
+    public function TrackingAppointmentCharts(){
+        return $this->hasMany(TrackingAppointmentChart::class);
+    }
+
     protected static function booted(){
         self::addGlobalScope('alphabeticOrdered', function(Builder $queryBuilder){
             $queryBuilder->orderBy('name');

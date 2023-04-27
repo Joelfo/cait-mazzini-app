@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
+use App\Http\Resources\VitalSignsMeasurementResource;
 use App\Services\VitalSignsMeasurementService;
 use Illuminate\Http\Request;
 

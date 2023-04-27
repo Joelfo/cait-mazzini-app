@@ -7,7 +7,7 @@ use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Services\BaseService;
 use Illuminate\Http\Request;
 
-class PntAppointment extends Controller
+class PntAppointmentController extends Controller
 {
     public $controllerHelper;
 

@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories;
 
-interface TBAppointmentRepository extends BaseRepository {
+interface TbAppointmentRepository extends BaseRepository {
     
 }

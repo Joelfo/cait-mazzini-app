@@ -19,7 +19,8 @@ class TbAppointmentFactory extends Factory
     public function definition()
     {
         return [
-            'appointment_type' => FactoryUtil::random_enum(TbAppointmentType::class)
+            'appointment_type' => FactoryUtil::random_enum(TbAppointmentType::class),
+            'patient_id' => 1
         ];
     }
 }

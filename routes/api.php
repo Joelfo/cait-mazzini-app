@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PatientController;
 use App\Http\Controllers\API\PatientExamController;
+use App\Http\Controllers\API\PntAppointmentController;
 use App\Http\Controllers\API\RelapseController;
 use App\Http\Controllers\API\ReleaseController;
 use App\Http\Controllers\API\TrackingAppointmentChartController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\VitalSignsMeasurementController;
 use App\Models\VitalSignsMeasurement;
 
 /*
@@ -58,6 +60,6 @@ Route::get('/trackingAppointmentCharts/{chartId}/patientExams', [PatientExamCont
     ->name('trackingAppointmentCharts.patientExams');
 Route::apiResource('trackingAppointmentCharts', TrackingAppointmentChartController::class);
 
-Route::apiResource('vitalSignsMeasurements', VitalSignsMeasurement::class)->except(['post', 'put']);
+Route::apiResource('patients.vitalSignsMeasurements', VitalSignsMeasurementController::class)->shallow();
 
-Route::apiResource('appointments', AppointmentController::class)->except(['post', 'put']);
+Route::apiResource('pntAppointments', PntAppointmentController::class)->except(['post', 'put']);

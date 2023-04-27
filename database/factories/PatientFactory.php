@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Database\Factories\FactoryUtil\FactoryUtil;
 use App\Enums\Arrival;
+use App\Enums\PatientType;
 use App\Enums\Type;
 use App\Models\City;
 use App\Models\District;
@@ -47,7 +48,7 @@ class PatientFactory extends Factory
             'rg' => strval(random_int(0, 9999)) . strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
             'cpf' => FactoryUtil::generateCpf(),
             'admission_date' => fake()->date(),
-            'type' => FactoryUtil::random_enum(Type::class),
+            'type' => FactoryUtil::random_enum(PatientType::class),
             'arrival' => FactoryUtil::random_enum(Arrival::class),
             'telephone_1' => "9" . strval(random_int(0, 9999)) . strval(random_int(0, 9999)),
             'telephone_2' => strval(random_int(0, 9999)) . strval(random_int(0, 9999)),

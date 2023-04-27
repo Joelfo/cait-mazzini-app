@@ -18,7 +18,7 @@ class TrackingAppointmentChartHateoas
 
     public function vitalSignsMeasurement(TrackingAppointmentChart $trackingAppointmentChart) : ?Link
     {
-        return $this->link('vitalSignsMeasurements.show', ['vitalSignMeasurement' => $trackingAppointmentChart->vitalSignMeasurement]);
+        return $this->link('vitalSignsMeasurements.show', ['vitalSignsMeasurement' => $trackingAppointmentChart->vitalSignsMeasurement]);
     }
 
     public function patientExams(TrackingAppointmentChart $trackingAppointmentChart) : ?Link 
