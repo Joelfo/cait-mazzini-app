@@ -12,7 +12,6 @@ class TbAppointment extends Model {
     use HasFactory;
 
     protected $fillable = [
-        'date',
         'appointment_type',
     ];
 

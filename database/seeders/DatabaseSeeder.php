@@ -26,8 +26,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             DistrictSeeder::class,
             HealthUnitySeeder::class,
-            PatientSeeder::class,
-            TrackingAppointmentChartSeeder::class,
+            PatientSeeder::class
         ]);
     }
 }

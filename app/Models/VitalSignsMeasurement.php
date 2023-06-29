@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class VitalSignsMeasurement extends Model
 {
     use HasFactory;
+    
+    public $timestamps = false;
 
     public $fillable = [
         'measurement_date_time',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTOs\VitalSignsMeasurementDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Resources\VitalSignsMeasurementResource;
@@ -25,17 +26,17 @@ class VitalSignsMeasurementController extends Controller
         return $this->controllerHelper->show($vitalSignsMeasurementId);
     }
 
-    /*public function store(VitalSignsMeasurementDTO $vitalSignsMeasurementDTO){
+    public function store(VitalSignsMeasurementDTO $vitalSignsMeasurementDTO){
         return $this->controllerHelper->store($vitalSignsMeasurementDTO);    
-    }*/
+    }
 
     public function destroy(int $vitalSignsMeasurementId){
         return $this->controllerHelper->destroy($vitalSignsMeasurementId);
     }
 
-    /*public function update(int $id, VitalSignsMeasurementDTO $vitalSignsMeasurementDTO){
+    public function update(int $id, VitalSignsMeasurementDTO $vitalSignsMeasurementDTO){
         return $this->controllerHelper->update($id, $vitalSignsMeasurementDTO);
-    }*/
+    }
 
     
 }

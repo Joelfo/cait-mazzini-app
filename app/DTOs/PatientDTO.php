@@ -5,6 +5,7 @@ namespace App\DTOs;
 use App\DTOs\Interfaces\EloquentModelCastable;
 use App\Enums\Arrival;
 use App\Enums\PatientType;
+use App\Enums\SpecialPopulation;
 use App\Http\Requests\PatientRequest;
 use App\Models\Nationality;
 use App\Rules\Cpf;
@@ -14,7 +15,33 @@ use Spatie\LaravelData\Attributes\Validation as Vld;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 
-class PatientDTO extends Data implements EloquentModelCastable {
+/**
+ * @OA\Schema(
+ *   schema="Patient",
+ *   description="Um modelo de paciente",
+ *   @OA\Property(property="id", type="number", example="29"),
+ *   @OA\Property(property="name", type="string", example="Moisés"),
+ *   @OA\Property(property="susCard", type="string", example="12345678"),
+ *   @OA\Property(property="rg", type="string", example="123456789"),
+ *   @OA\Property(property="cpf", type="string", example="12345678910"),
+ *   @OA\Property(property="admissionDate", type="string", example="11-11-2020"),
+ *   @OA\Property(property="type", type="string", example="TB"),
+ *   @OA\Property(property="arrival", type="string", example="Referenciado"),
+ *   @OA\Property(property="telephone1", type="string", example="21999999999"),
+ *   @OA\Property(property="telephone2", type="string", example="2155555555"),
+ *   @OA\Property(property="cep", type="string", example="21111050"),
+ *   @OA\Property(property="isPregnant", type="bool", example="false"),
+ *   @OA\Property(property="birthDate", type="string", example="21-02-1954"),
+ *   @OA\Property(property="recordCode", type="string", example="TB99999"),
+ *   @OA\Property(property="motherName", type="string", example="Rute"),
+ *   @OA\Property(property="address", type="string", example="Rua do Nunca, número 999, apartamento 1851"),
+ *   @OA\Property(property="district", @OA\Property(property="id", type="number", example="2")),
+ *   @OA\Property(property="birthplace", @OA\Property(property="id", type="number", example="3")),
+ *   @OA\Property(property="nationality", @OA\Property(property="id", type="number", example="1")),
+ *   @OA\Property(property="healthUnity", @OA\Property(property="id", type="number", example="6"))
+ * )
+ */
+class PatientDTO extends Data {
     public function __construct(
         #[Vld\Required, Vld\Between(1, 255)]
         public readonly string $name,
@@ -45,41 +72,27 @@ class PatientDTO extends Data implements EloquentModelCastable {
         #[Vld\Nullable, Vld\Between(1, 255)]
         public readonly string $motherName,
         #[Vld\Required]
-        public readonly string $address,
+        public readonly string $street,
         #[Vld\Required]
-        public readonly int $districtId,
-        #[Vld\Required]
-        public readonly int $birthplaceId,
-        #[Vld\Required]
-        public readonly int $nationalityId,
+        public readonly string $number,
         #[Vld\Nullable]
-        public readonly ?int $healthUnityId
+        public readonly ?string $complement,
+        #[Vld\Required, Vld\Enum(SpecialPopulation::class)]
+        public readonly string $specialPopulation,
+        #[Vld\Nullable]
+        public readonly ?string $otherSpecialPopulation,
+        #[Vld\Required] 
+        public readonly string $biologicalGender,
+        #[Vld\Required]
+        public readonly IdModelDTO $district,
+        #[Vld\Required]
+        public readonly IdModelDTO $birthplace,
+        #[Vld\Required]
+        public readonly IdModelDTO $nationality,
+        #[Vld\Nullable]
+        public readonly ?IdModelDTO $healthUnity
     )
     {
-    }
 
-    public function toModelArray()
-    {
-        return [
-            'name' => $this->name,
-            'sus_card' => $this->susCard,
-            'rg' => $this->rg,
-            'cpf' => $this->cpf,
-            'admission_date' => $this->admissionDate,
-            'record_code' => $this->recordCode,
-            'type' => $this->type,
-            'arrive' => $this->arrival,
-            'telephone_1' => $this->telephone1,
-            'telephone_2' => $this->telephone2,
-            'cep' => $this->cep,
-            'pregnant' => $this->isPregnant,
-            'birth_date' => $this->birthDate,
-            'mother_name' => $this->motherName,
-            'address' => $this->address,
-            'district_id' => $this->districtId, 
-            'birthplace_id' => $this->birthplaceId,
-            'nationality_id' => $this->nationalityId,
-            'health_unity_id' => $this->healthUnityId
-        ];
-    }
+    }  
 }

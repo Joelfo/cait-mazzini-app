@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTOs\TbAppointmentDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Services\BaseService;
@@ -25,15 +26,15 @@ class TbAppointmentController extends Controller
         return $this->controllerHelper->show($tbAppointmentId);
     }
 
-    /*public function store(TbAppointmentDTO $tbAppointmentDTO){
+    public function store(TbAppointmentDTO $tbAppointmentDTO){
         return $this->controllerHelper->store($tbAppointmentDTO);    
-    }*/
+    }
 
     public function destroy(int $tbAppointmentId){
         return $this->controllerHelper->destroy($tbAppointmentId);
     }
 
-    /*public function update(int $id, TbAppointmentDTO $tbAppointmentDTO){
+    public function update(int $id, TbAppointmentDTO $tbAppointmentDTO){
         return $this->controllerHelper->update($id, $tbAppointmentDTO);
-    }*/
+    }
 }

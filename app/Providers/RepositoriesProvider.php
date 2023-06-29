@@ -16,6 +16,7 @@ use App\Repositories\Eloquent\EloquentHealthUnityRepository;
 use App\Repositories\Eloquent\EloquentNationalityRepository;
 use App\Repositories\Eloquent\EloquentPatientExamRepository;
 use App\Repositories\Eloquent\EloquentPatientRepository;
+use App\Repositories\Eloquent\EloquentPntAppointmentRepository;
 use App\Repositories\Eloquent\EloquentRelapseRepository;
 use App\Repositories\Eloquent\EloquentReleaseRepository;
 use App\Repositories\Eloquent\EloquentTbAppointmentRepository;
@@ -25,9 +26,10 @@ use App\Repositories\HealthUnityRepository;
 use App\Repositories\NationalityRepository;
 use App\Repositories\PatientExamRepository;
 use App\Repositories\PatientRepository;
+use App\Repositories\PntAppointmentRepository;
 use App\Repositories\RelapseRepository;
 use App\Repositories\ReleaseRepository;
-use App\Repositories\TBAppointmentRepository;
+use App\Repositories\TbAppointmentRepository;
 use App\Repositories\TrackingAppointmentChartRepository;
 use App\Repositories\VitalSignsMeasurementRepository;
 use Illuminate\Support\ServiceProvider;
@@ -47,7 +49,8 @@ class RepositoriesProvider extends ServiceProvider
         VitalSignsMeasurementRepository::class => EloquentVitalSignsMeasurementRepository::class,
         PatientExamRepository::class => EloquentPatientExamRepository::class,
         AppointmentRepository::class => EloquentAppointmentRepository::class,
-        TbAppointmentRepository::class => EloquentTbAppointmentRepository::class
+        TbAppointmentRepository::class => EloquentTbAppointmentRepository::class,
+        PntAppointmentRepository::class => EloquentPntAppointmentRepository::class
         ];
 
     /**

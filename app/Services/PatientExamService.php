@@ -13,4 +13,9 @@ class PatientExamService extends BaseService
     public function showByChart(int $chartId){
         return $this->repository->getByChart($chartId);
     }
+
+    public function getModelAttributesFromDTO($dto)
+    {
+        
+    }
 }

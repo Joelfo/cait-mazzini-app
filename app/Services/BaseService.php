@@ -5,7 +5,7 @@ namespace App\Services;
 use App\DTOs\Interfaces\EloquentModelCastable;
 use App\Repositories\BaseRepository;
 
-class BaseService {
+abstract class BaseService {
     protected $repository;
 
     public function __construct(BaseRepository $repository){
@@ -30,16 +30,18 @@ class BaseService {
         return $this->repository->getById($id);
     }
 
-    public function store(EloquentModelCastable $dto){
-        $this->repository->create($dto->toModelArray());
+    public function store($dto){
+        $this->repository->create($this->getModelAttributesFromDTO($dto));
     }
 
-    public function update($id, EloquentModelCastable $dto){
-        return $this->repository->update($id, $dto->toModelArray());
+    public function update($id, $dto){
+        return $this->repository->update($id, $this->getModelAttributesFromDTO($dto));
     }
 
     public function destroy(int $id){
         $this->repository->delete($id);
     }
+
+    public abstract function getModelAttributesFromDTO($dto);
 
 }

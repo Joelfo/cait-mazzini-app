@@ -11,7 +11,8 @@ class HealthUnity extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'district_id'
     ];
 
     public $timestamps = false;

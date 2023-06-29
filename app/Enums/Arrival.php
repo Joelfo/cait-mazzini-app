@@ -6,7 +6,7 @@ enum Arrival : string
 {
     case Fowarded = 'Encaminhado';
     case Referenced = 'Referenciado';
-    case SpontaneousDemand = 'Demanda Espontanea';
+    case SpontaneousDemand = 'Demanda Espontânea';
 }
 
 ?>

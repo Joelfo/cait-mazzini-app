@@ -12,6 +12,7 @@ use App\Http\Controllers\API\PatientExamController;
 use App\Http\Controllers\API\PntAppointmentController;
 use App\Http\Controllers\API\RelapseController;
 use App\Http\Controllers\API\ReleaseController;
+use App\Http\Controllers\API\TbAppointmentController;
 use App\Http\Controllers\API\TrackingAppointmentChartController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VitalSignsMeasurementController;
@@ -34,7 +35,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('patients', PatientController::class);
 
-Route::get('/healthUnities/{healthUnityId}/patients', [PatientController::class, 'showByHealthUnity'])
+Route::get('/healthUnities/{healthUnity}/patients', [PatientController::class, 'showByHealthUnity'])
     ->name('healthUnities.patients');
 Route::apiResource('healthUnities', HealthUnityController::class);
 
@@ -60,6 +61,8 @@ Route::get('/trackingAppointmentCharts/{chartId}/patientExams', [PatientExamCont
     ->name('trackingAppointmentCharts.patientExams');
 Route::apiResource('trackingAppointmentCharts', TrackingAppointmentChartController::class);
 
-Route::apiResource('patients.vitalSignsMeasurements', VitalSignsMeasurementController::class)->shallow();
+Route::apiResource('vitalSignsMeasurements', VitalSignsMeasurementController::class);
 
 Route::apiResource('pntAppointments', PntAppointmentController::class)->except(['post', 'put']);
+
+Route::apiResource('tbAppointments', TbAppointmentController::class);

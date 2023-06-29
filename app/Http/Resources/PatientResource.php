@@ -70,6 +70,7 @@ class PatientResource extends JsonResource
         'recordCode' => $this->record_code, 
         'motherName' => $this->mother_name, 
         'address' => $this->address,
+        'specialPopulation' => $this->special_population,
         '_links' => $this->links()
         ];
     }

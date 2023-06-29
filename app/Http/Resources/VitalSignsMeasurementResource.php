@@ -22,8 +22,8 @@ class VitalSignsMeasurementResource extends JsonResource
             'fcBpm' => $this->fc_bpm,
             'frIrpm' => $this->fr_irpm,
             'oxygenSaturationPercentage' => $this->oxygen_saturation_percentage,
-            'weightKg' => $this->weight,
-            'heightM' => $this->height,
+            'weightKg' => $this->weight_kg,
+            'heightM' => $this->height_m,
             'MeasurementDateTime' => $this->measurement_date_time,
             '_links' => $this->links()
         ];
