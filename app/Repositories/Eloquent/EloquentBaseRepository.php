@@ -3,15 +3,13 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Model;
-
+/**
+ * @template T of Model
+ */
 class EloquentBaseRepository{
     protected $model;
 
 
-    /**
-     * @param mixed $modelClass 
-     * The class which the model used by the specific repository belongs to.
-     */
     public function __construct($modelClass)
     {
         $this->model = app($modelClass);
@@ -30,20 +28,20 @@ class EloquentBaseRepository{
         return $this->model->paginate($pageLimit);
     }
 
-    public function create($data) 
+    public function create($data)
     {
         $this->model->create($data);
     }
 
-    public function update($id, $modelData) 
-    { 
+    public function update($id, $modelData)
+    {
         $modelToSave = $this->model->find($id);
         $modelToSave->fill($modelData);
         $modelToSave->save();
         return $modelToSave;
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $this->model->destroy($id);
     }

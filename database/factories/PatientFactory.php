@@ -23,9 +23,9 @@ class PatientFactory extends Factory
 {
     protected $model = Patient::class;
 
-    
 
-    
+
+
     /*public function configure(): static {
         return $this->afterMaking(function(Patient $patient){
             if ($patient->arrive == Arrival::Fowarded || $patient->arrive == Arrival::Referenced){
@@ -62,7 +62,7 @@ class PatientFactory extends Factory
             'street' => fake()->streetName(),
             'number' => fake()->numberBetween(1, 100),
             'biological_gender' => FactoryUtil::random_enum(BiologicalGender::class),
-            'special_population' => FactoryUtil::random_enum(SpecialPopulation::class),
+            'special_population_type' => FactoryUtil::random_enum(SpecialPopulation::class),
             'birthplace_id' => City::all()->random(),
             'district_id' => District::all()->random(),
             'nationality_id' => Nationality::all()->random()

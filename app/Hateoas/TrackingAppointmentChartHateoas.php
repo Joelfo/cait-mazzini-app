@@ -21,19 +21,19 @@ class TrackingAppointmentChartHateoas
         return $this->link('vitalSignsMeasurements.show', ['vitalSignsMeasurement' => $trackingAppointmentChart->vitalSignsMeasurement]);
     }
 
-    public function patientExams(TrackingAppointmentChart $trackingAppointmentChart) : ?Link 
+    public function patientExams(TrackingAppointmentChart $trackingAppointmentChart) : ?Link
     {
         return $this->link('trackingAppointmentCharts.patientExams', ['chartId' => $trackingAppointmentChart->id]);
     }
 
-    public function patient(TrackingAppointmentChart $trackingAppointmentChart) : ?Link 
+    public function patient(TrackingAppointmentChart $trackingAppointmentChart) : ?Link
     {
         return $this->link('patients.show', ['patient' => $trackingAppointmentChart->patient]);
     }
 
     public function appointment(TrackingAppointmentChart $trackingAppointmentChart) : ?Link
     {
-        if (is_a($trackingAppointmentChart->appointment, TbAppointment::class)){
+        if ($trackingAppointmentChart->appointment_type == 'tb'){
             return $this->link('tbAppointments.show', ['tbAppointment' => $trackingAppointmentChart->appointment]);
         }
         else {

@@ -13,7 +13,7 @@ use App\Repositories\VitalSignsMeasurementRepository;
 class TrackingAppointmentChartService extends BaseService
 {
     public function __construct(
-        TrackingAppointmentChartRepository $repository, 
+        TrackingAppointmentChartRepository $repository,
         public VitalSignsMeasurementRepository $vitalSignsMeasurementRepository,
         public PatientRepository $patientRepository,
         public TbAppointmentRepository $tbAppointmentRepository,
@@ -30,9 +30,10 @@ class TrackingAppointmentChartService extends BaseService
             'evolution' => $dto->evolution,
             'type' => $dto->type,
             'vital_signs_measurement_id' => $dto->vitalSignsMeasurement->id,
-            'patient' => $dto->patient->id,
+            'patient_id' => $dto->patient->id,
             'appointment_type' => $dto->appointmentType,
-            'appointment_id' => $dto->appointment->id
+            'appointment_id' => $dto->appointment->id,
+            'date' => $dto->date
         ];
 
         return $attributes;

@@ -17,5 +17,11 @@ class PntAppointment extends Model {
         'patient_id'
     ];
 
-    
+    protected $table = "pnt_appointments";
+
+    public $timestamps = false;
+
+    public function trackingAppointmentCharts(){
+        return $this->morphMany(TrackingAppointmentChart::class, 'appointment');
+    }
 }

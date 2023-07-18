@@ -16,9 +16,17 @@ class TrackingAppointmentChart extends Model
         'evolution',
         'conduct',
         'appointment_id',
+        'appointment_type',
         'vital_signs_measurement_id',
+        'date',
         'patient_id'
     ];
+
+    protected $casts = [
+        'date' => 'datetime'
+    ];
+
+    public $timestamps = false;
 
     public function patient(){
         return $this->belongsTo(Patient::class);
@@ -31,7 +39,7 @@ class TrackingAppointmentChart extends Model
     public function patientExams(){
         return $this->morphToMany(PatientExam::class, 'chart', 'patient_exams_charts');
     }
-    
+
     public function vitalSignsMeasurement(){
         return $this->belongsTo(VitalSignsMeasurement::class);
     }

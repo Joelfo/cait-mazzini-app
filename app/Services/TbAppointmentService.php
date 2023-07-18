@@ -13,7 +13,8 @@ class TbAppointmentService extends BaseService
     public function getModelAttributesFromDTO($dto)
     {
         return [
-          'appointment_type' => $dto->appointmentType  
+          'appointment_type' => $dto->appointmentType,
+          'patient_id' => $dto->patient->id
         ];
     }
 }

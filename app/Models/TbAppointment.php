@@ -13,11 +13,14 @@ class TbAppointment extends Model {
 
     protected $fillable = [
         'appointment_type',
+        'patient_id'
     ];
+
+    public $timestamps = false;
 
     public function trackingChart(){
         return $this->morphMany(TrackingAppointmentChart::class, 'appointment', );
-    }   
+    }
 
     public function patient(){
         return $this->belongsTo(Patient::class);

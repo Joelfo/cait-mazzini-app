@@ -39,7 +39,7 @@ Route::get('/healthUnities/{healthUnity}/patients', [PatientController::class, '
     ->name('healthUnities.patients');
 Route::apiResource('healthUnities', HealthUnityController::class);
 
-Route::prefix('/cities')->name('cities.')->group(function() 
+Route::prefix('/cities')->name('cities.')->group(function()
 {
     //Route::get('/{cityId}/districts', [DistrictController::class, 'showByCity'])->name('districts');
     //Route::get('/{cityId}/patients', [PatientController::class, 'showByCity'])->name('patients');

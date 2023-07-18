@@ -17,28 +17,28 @@ use OpenApi\Annotations as OA;
 class Patient extends Model
 {
     use HasFactory;
-    
+
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 
-        'sus_card', 
-        'rg', 
-        'cpf', 
-        'admission_date', 
-        'type', 
-        'arrival', 
-        'telephone_1', 
-        'telephone_2', 
-        'cep', 
-        'is_pregnant', 
-        'birth_date', 
-        'record_code', 
-        'mother_name', 
+        'name',
+        'sus_card',
+        'rg',
+        'cpf',
+        'admission_date',
+        'type',
+        'arrival',
+        'telephone_1',
+        'telephone_2',
+        'cep',
+        'is_pregnant',
+        'birth_date',
+        'record_code',
+        'mother_name',
         'street',
         'number',
         'complement',
-        'special_population',
+        'special_population_type',
         'other_special_population',
         'biological_gender',
         'district_id',
@@ -46,13 +46,13 @@ class Patient extends Model
         'nationality_id',
         'health_unity_id'
     ];
-    
+
     protected $casts = [
         'pregnant' => 'boolean',
         'admission_date' => 'datetime',
         'birth_date' => 'datetime',
         'arrival' => Arrival::class,
-        'special_population' => SpecialPopulation::class,
+        'special_population_type' => SpecialPopulation::class,
         'type' => PatientType::class
     ];
 

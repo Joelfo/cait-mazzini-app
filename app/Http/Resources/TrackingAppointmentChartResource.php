@@ -21,7 +21,7 @@ class TrackingAppointmentChartResource extends JsonResource
             'date' => $this->date,
             'evolution' => $this->evolution,
             'conduct' => $this->conduct,
-            'vitalSingsMeasurement' => new VitalSignsMeasurementResource($this->load('vitalSignsMeasurement')), 
+            'vitalSingsMeasurement' => new VitalSignsMeasurementResource($this->vitalSignsMeasurement),
             '_links' => $this->links()
         ];
     }

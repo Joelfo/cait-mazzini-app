@@ -11,6 +11,8 @@ class Nationality extends Model
     protected $fillable = [
         'name'
     ];
-    
+
     public $timestamps = false;
+
+    protected $table = 'nationality';
 }

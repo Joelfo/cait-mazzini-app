@@ -21,7 +21,7 @@ class PatientService extends BaseService
         public HealthUnityRepository $healthUnityRepository
     )
     {
-        $this->setRepository($repository);  
+        $this->setRepository($repository);
     }
 
 
@@ -30,7 +30,7 @@ class PatientService extends BaseService
         return $this->repository->getByHealthUnity($healthUnityId);
     }
 
-    
+
 
     public function getModelAttributesFromDTO($dto)
     {
@@ -52,10 +52,10 @@ class PatientService extends BaseService
             'street' => $dto->street,
             'number' => $dto->number,
             'complement' => $dto->complement,
-            'district_id' => $dto->district->id, 
+            'district_id' => $dto->district->id,
             'birthplace_id' => $dto->birthplace->id,
             'nationality_id' => $dto->nationality->id,
-            'special_population' => $dto->specialPopulation,
+            'special_population_type' => $dto->specialPopulation,
             'other_special_population' => $dto->otherSpecialPopulation,
             'biological_gender' => $dto->biologicalGender
         ];

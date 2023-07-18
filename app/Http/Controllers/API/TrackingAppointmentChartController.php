@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTOs\TrackingAppointmentChartDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Resources\TrackingAppointmentChartResource;
@@ -25,15 +26,15 @@ class TrackingAppointmentChartController extends Controller
         return $this->controllerHelper->show($trackingAppointmentChartId);
     }
 
-    /*public function store(TrackingAppointmentChartDTO $trackingAppointmentChartDTO){
-        return $this->controllerHelper->store($trackingAppointmentChartDTO);    
-    }*/
+    public function store(TrackingAppointmentChartDTO $trackingAppointmentChartDTO){
+        return $this->controllerHelper->store($trackingAppointmentChartDTO);
+    }
 
     public function destroy(int $trackingAppointmentChartId){
         return $this->controllerHelper->destroy($trackingAppointmentChartId);
     }
 
-    /*public function update(int $id, TrackingAppointmentChartDTO $trackingAppointmentChartDTO){
+    public function update(int $id, TrackingAppointmentChartDTO $trackingAppointmentChartDTO){
         return $this->controllerHelper->update($id, $trackingAppointmentChartDTO);
-    }*/
+    }
 }

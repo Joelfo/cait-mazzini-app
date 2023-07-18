@@ -1,4 +1,4 @@
-3<?php
+<?php
 
 namespace App\DTOs;
 
@@ -24,11 +24,15 @@ class TrackingAppointmentChartDTO extends Data
       #[Vld\Required]
       public readonly IdModelDTO $appointment,
       #[Vld\Required]
-      public readonly string $appointmentType
-    ) 
+      public readonly string $appointmentType,
+      #[Vld\Required]
+      public readonly IdModelDTO $patient,
+      #[Vld\Required, Vld\DateFormat("d/m/Y")]
+      public readonly string $date
+    )
     {
-      
+
     }
 
-   
+
 }
