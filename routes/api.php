@@ -1,14 +1,18 @@
 <?php
 
+
 use App\Http\Controllers\API\AppointmentController;
 use App\Http\Controllers\API\CityController;
 use App\Http\Controllers\API\DistrictController;
 use App\Http\Controllers\API\HealthUnityController;
+use App\Http\Controllers\API\LifeHabitsInfoController;
 use App\Http\Controllers\API\NationalityController;
+use App\Http\Controllers\API\NurseryIdentificationInfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PatientController;
 use App\Http\Controllers\API\PatientExamController;
+use App\Http\Controllers\API\PhysicalExamController;
 use App\Http\Controllers\API\PntAppointmentController;
 use App\Http\Controllers\API\RelapseController;
 use App\Http\Controllers\API\ReleaseController;
@@ -66,3 +70,9 @@ Route::apiResource('vitalSignsMeasurements', VitalSignsMeasurementController::cl
 Route::apiResource('pntAppointments', PntAppointmentController::class)->except(['post', 'put']);
 
 Route::apiResource('tbAppointments', TbAppointmentController::class);
+
+Route::apiResource('physicalExams', PhysicalExamController::class);
+
+Route::apiResource('nurseryIdentificationInfos', NurseryIdentificationInfoController::class);
+
+Route::apiResource('lifeHabitsInfos', LifeHabitsInfoController::class);

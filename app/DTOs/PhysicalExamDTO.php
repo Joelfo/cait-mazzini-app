@@ -9,15 +9,25 @@ use Spatie\LaravelData\Attributes\Validation as Vld;
 class PhysicalExamDTO extends Data
 {
     public function __construct(
-      public string $generalAspect,
-      public string $hygieneConditions,
-      public string $head,
-      public string $neck,
-      public string $chest,
-      public string $abdomen,
-      public string $mmssMmii,
-      public string $urinaryTrack,
-      public string $skinAndMucous,
-      public IdModelDTO $patient
+      #[VLD\Nullable]
+      public readonly ?string $generalAspect,
+      #[VLD\Nullable]
+      public readonly ?string $hygieneConditions,
+      #[VLD\Nullable]
+      public readonly ?string $head,
+      #[VLD\Nullable]
+      public readonly ?string $neck,
+      #[VLD\Nullable]
+      public readonly ?string $chest,
+      #[VLD\Nullable]
+      public readonly ?string $abdomen,
+      #[VLD\Nullable]
+      public readonly ?string $mmssMmii,
+      #[VLD\Nullable]
+      public readonly ?string $urinaryTrack,
+      #[VLD\Nullable]
+      public readonly ?string $skinAndMucous,
+      #[VLD\Nullable]
+      public readonly IdModelDTO $patient
     ) {}
 }

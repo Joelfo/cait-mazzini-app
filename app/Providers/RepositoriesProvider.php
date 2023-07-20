@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\NurseryIdentificationInfo;
 use App\Models\TrackingAppointmentChart;
 use App\Models\VitalSignsMeasurement;
 use App\Repositories\AppointmentRepository;
@@ -13,9 +14,12 @@ use App\Repositories\Eloquent\EloquentBaseRepository;
 use App\Repositories\Eloquent\EloquentCityRepository;
 use App\Repositories\Eloquent\EloquentDistrictRepository;
 use App\Repositories\Eloquent\EloquentHealthUnityRepository;
+use App\Repositories\Eloquent\EloquentLifeHabitsInfoRepository;
 use App\Repositories\Eloquent\EloquentNationalityRepository;
+use App\Repositories\Eloquent\EloquentNurseryIdentificationInfoRepository;
 use App\Repositories\Eloquent\EloquentPatientExamRepository;
 use App\Repositories\Eloquent\EloquentPatientRepository;
+use App\Repositories\Eloquent\EloquentPhysicalExamRepository;
 use App\Repositories\Eloquent\EloquentPntAppointmentRepository;
 use App\Repositories\Eloquent\EloquentRelapseRepository;
 use App\Repositories\Eloquent\EloquentReleaseRepository;
@@ -23,9 +27,12 @@ use App\Repositories\Eloquent\EloquentTbAppointmentRepository;
 use App\Repositories\Eloquent\EloquentTrackingAppointmentChartRepository;
 use App\Repositories\Eloquent\EloquentVitalSignsMeasurementRepository;
 use App\Repositories\HealthUnityRepository;
+use App\Repositories\LifeHabitsInfoRepository;
 use App\Repositories\NationalityRepository;
+use App\Repositories\NurseryIdentificationInfoRepository;
 use App\Repositories\PatientExamRepository;
 use App\Repositories\PatientRepository;
+use App\Repositories\PhysicalExamRepository;
 use App\Repositories\PntAppointmentRepository;
 use App\Repositories\RelapseRepository;
 use App\Repositories\ReleaseRepository;
@@ -50,7 +57,10 @@ class RepositoriesProvider extends ServiceProvider
         PatientExamRepository::class => EloquentPatientExamRepository::class,
         AppointmentRepository::class => EloquentAppointmentRepository::class,
         TbAppointmentRepository::class => EloquentTbAppointmentRepository::class,
-        PntAppointmentRepository::class => EloquentPntAppointmentRepository::class
+        PntAppointmentRepository::class => EloquentPntAppointmentRepository::class,
+        PhysicalExamRepository::class => EloquentPhysicalExamRepository::class,
+        NurseryIdentificationInfoRepository::class => EloquentNurseryIdentificationInfoRepository::class,
+        LifeHabitsInfoRepository::class => EloquentLifeHabitsInfoRepository::class,
         ];
 
     /**
@@ -60,6 +70,6 @@ class RepositoriesProvider extends ServiceProvider
      */
     public function register()
     {
-        
+
     }
 }

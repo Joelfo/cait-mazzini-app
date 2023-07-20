@@ -11,7 +11,7 @@ class PhysicalExam extends Model
 {
     use HasFactory;
 
-    protected $physicalExam = [
+    protected $fillable = [
         'general_aspect',
         'hygiene_conditions',
         'head',
@@ -23,4 +23,10 @@ class PhysicalExam extends Model
         'skin_and_mucous',
         'patient_id',
     ];
+
+    public $timestamps = false;
+
+    public function patient(){
+        return $this->belongsTo(Patient::class);
+    }
 }

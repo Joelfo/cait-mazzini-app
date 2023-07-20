@@ -28,7 +28,7 @@ class HealthUnityController extends Controller
     }
 
     public function store(HealthUnityDTO $healthUnityDTO){
-        return $this->controllerHelper->store($healthUnityDTO);    
+        return $this->controllerHelper->store($healthUnityDTO);
     }
 
     public function destroy(int $healthUnityId){
