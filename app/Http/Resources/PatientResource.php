@@ -69,9 +69,12 @@ class PatientResource extends JsonResource
         'birthDate' => $this->birth_date->format('d/m/Y'),
         'recordCode' => $this->record_code,
         'motherName' => $this->mother_name,
-        'address' => $this->address,
-        'specialPopulation' => $this->special_population,
+        'street' => $this->street,
+        'number' => $this->number,
+        'specialPopulation' => $this->special_population_type,
         'birthplace' => $this->birthplace,
+        'district' => new BaseModelResource($this->district),
+        'healthUnity' => $this->healthUnity != null ? new BaseModelResource($this->healthUnity) : null,
         '_links' => $this->links()
         ];
     }

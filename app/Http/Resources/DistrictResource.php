@@ -18,7 +18,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *      {"rel": "self", "type": "get", "href": "http://localhost:8000/api/districts/7"},
  *      {"rel": "city", "type": "get", "href": "http://localhost:8000/api/cities/2"}
  *     },
- *     @OA\Items( 
+ *     @OA\Items(
  *       @OA\Property(property="rel", type="string"),
  *       @OA\Property(property="type", type="string"),
  *       @OA\Property(property="href", type="string")
@@ -39,6 +39,7 @@ class DistrictResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'city' => new BaseModelResource($this->city),
             '_links' => $this->links()
         ];
     }
