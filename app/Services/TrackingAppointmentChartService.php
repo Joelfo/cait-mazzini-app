@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Enums\TrackingAppointmentChartType;
 use App\Models\PntAppointment;
 use App\Models\TbAppointment;
 use App\Models\TrackingAppointmentChart;
@@ -20,6 +21,10 @@ class TrackingAppointmentChartService extends BaseService
         public PntAppointmentRepository $pntAppointmentRepository
         ){
         $this->setRepository($repository);
+    }
+
+    public function getByPatientAndTypePaginated(int $patientId, TrackingAppointmentChartType $type, int $limit) {
+        return $this->repository->getByPatientAndTypePaginated($patientId, $type, $limit);
     }
 
     public function getModelAttributesFromDTO($dto)

@@ -23,12 +23,16 @@ class NationalityController extends Controller
         return $this->controllerHelper->index($request);
     }
 
+    public function all() {
+        return $this->service->all();
+    }
+
     public function show(int $nationalityId){
         return $this->controllerHelper->show($nationalityId);
     }
 
     public function store(NationalityDTO $nationalityDTO){
-        return $this->controllerHelper->store($nationalityDTO);    
+        return $this->controllerHelper->store($nationalityDTO);
     }
 
     public function destroy(int $nationalityId){

@@ -4,9 +4,9 @@ namespace App\Enums;
 
 enum Arrival : string
 {
-    case Fowarded = 'Encaminhado';
-    case Referenced = 'Referenciado';
-    case SpontaneousDemand = 'Demanda Espontânea';
+    case Fowarded = 'ENCAMINHADO';
+    case Referenced = 'REFERENCIADO';
+    case SpontaneousDemand = 'DEMANDA ESPONTÂNEA';
 }
 
 ?>

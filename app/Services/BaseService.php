@@ -25,6 +25,11 @@ abstract class BaseService {
         return $this->repository->allPaginated($pageLimit);
     }
 
+    public function all()
+    {
+        return $this->repository->all();
+    }
+
     public function show(int $id)
     {
         return $this->repository->getById($id);

@@ -28,7 +28,7 @@ class DistrictController extends Controller
     }
 
     public function store(DistrictDTO $districtDTO){
-        return $this->controllerHelper->store($districtDTO);    
+        return $this->controllerHelper->store($districtDTO);
     }
 
     public function destroy(int $districtId){
@@ -37,5 +37,10 @@ class DistrictController extends Controller
 
     public function update(int $id, DistrictDTO $districtDTO){
         return $this->controllerHelper->update($id, $districtDTO);
+    }
+
+    public function getByCity(int $cityId) {
+        $districts = $this->service->getByCity($cityId);
+        return DistrictResource::collection($districts);
     }
 }

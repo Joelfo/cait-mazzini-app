@@ -53,7 +53,7 @@ class PatientService extends BaseService
             'number' => $dto->number,
             'complement' => $dto->complement,
             'district_id' => $dto->district->id,
-            'birthplace_id' => $dto->birthplace->id,
+            'birthplace' => $dto->birthplace,
             'nationality_id' => $dto->nationality->id,
             'special_population_type' => $dto->specialPopulation,
             'other_special_population' => $dto->otherSpecialPopulation,

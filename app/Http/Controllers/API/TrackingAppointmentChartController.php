@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\DTOs\TrackingAppointmentChartDTO;
+use App\Enums\TrackingAppointmentChartType;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\CRUDControllerHelper;
 use App\Http\Resources\TrackingAppointmentChartResource;
@@ -36,5 +37,19 @@ class TrackingAppointmentChartController extends Controller
 
     public function update(int $id, TrackingAppointmentChartDTO $trackingAppointmentChartDTO){
         return $this->controllerHelper->update($id, $trackingAppointmentChartDTO);
+    }
+
+    public function getByPatientAndType(Request $request, int $patientId, TrackingAppointmentChartType $type) {
+        if ($request->filled('limit')){
+            $limit = $request->input('limit');
+            if (is_numeric($request->input('limit'))){
+                $limit = (int) $limit;
+            }
+        }
+        else {
+            $limit = 10;
+        }
+        $page = $this->service->getByPatientAndTypePaginated($patientId, $type, $limit);
+        return TrackingAppointmentChartResource::collection($page);
     }
 }

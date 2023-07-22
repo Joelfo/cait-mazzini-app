@@ -59,8 +59,8 @@ class PatientDTO extends Data {
         public readonly Arrival $arrival,
         #[Vld\Required, Vld\Numeric]
         public readonly string $telephone1,
-        #[Vld\Required, Vld\Numeric]
-        public readonly string $telephone2, 
+        #[Vld\Nullable, Vld\Numeric]
+        public readonly ?string $telephone2,
         #[Vld\Required, Vld\Size(8)]
         public readonly string $cep,
         #[Vld\Required, Vld\BooleanType]
@@ -81,12 +81,12 @@ class PatientDTO extends Data {
         public readonly string $specialPopulation,
         #[Vld\Nullable]
         public readonly ?string $otherSpecialPopulation,
-        #[Vld\Required] 
+        #[Vld\Required]
         public readonly string $biologicalGender,
         #[Vld\Required]
         public readonly IdModelDTO $district,
         #[Vld\Required]
-        public readonly IdModelDTO $birthplace,
+        public readonly string $birthplace,
         #[Vld\Required]
         public readonly IdModelDTO $nationality,
         #[Vld\Nullable]
@@ -94,5 +94,5 @@ class PatientDTO extends Data {
     )
     {
 
-    }  
+    }
 }

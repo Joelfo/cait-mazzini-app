@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use GDebrauwer\Hateoas\Traits\HasLinks;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TrackingAppointmentChartResource extends JsonResource
+class HealthUnityResource extends JsonResource
 {
     use HasLinks;
     /**
@@ -18,11 +18,7 @@ class TrackingAppointmentChartResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'date' => $this->date,
-            'evolution' => $this->evolution,
-            'conduct' => $this->conduct,
-            'type' => $this->type,
-            'vitalSingsMeasurement' => new VitalSignsMeasurementResource($this->vitalSignsMeasurement),
+            'name' => $this->name,
             '_links' => $this->links()
         ];
     }

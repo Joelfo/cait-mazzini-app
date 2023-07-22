@@ -19,6 +19,10 @@ class HealthUnityController extends Controller
         $this->controllerHelper = new CRUDControllerHelper($service, HealthUnityResource::class);
     }
 
+    public function all() {
+        return $this->service->all();
+    }
+
     public function index(Request $request){
         return $this->controllerHelper->index($request);
     }

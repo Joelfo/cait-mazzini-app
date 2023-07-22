@@ -20,6 +20,9 @@ use App\Http\Controllers\API\TbAppointmentController;
 use App\Http\Controllers\API\TrackingAppointmentChartController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VitalSignsMeasurementController;
+use App\Models\HealthUnity;
+use App\Models\Nationality;
+use App\Models\TrackingAppointmentChart;
 use App\Models\VitalSignsMeasurement;
 
 /*
@@ -37,8 +40,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('patients/{patientId}/trackingAppointmentCharts/{type}', [TrackingAppointmentChartController::class, 'getByPatientAndType'])
+    ->name('patients.trackingAppointmentCharts');
 Route::apiResource('patients', PatientController::class);
 
+Route::get('healthUnities/all', [HealthUnityController::class, 'all'])->name('healthUnities.all');
 Route::get('/healthUnities/{healthUnity}/patients', [PatientController::class, 'showByHealthUnity'])
     ->name('healthUnities.patients');
 Route::apiResource('healthUnities', HealthUnityController::class);
@@ -49,10 +55,15 @@ Route::prefix('/cities')->name('cities.')->group(function()
     //Route::get('/{cityId}/patients', [PatientController::class, 'showByCity'])->name('patients');
 }
 );
+
+Route::get('cities/all', [CityController::class, 'all'])->name('cities.all');
+Route::get('cities/{cityId}/districts', [DistrictController::class, 'getByCity'])
+    ->name('cities.districts');
 Route::apiResource('cities', CityController::class);
 
 Route::apiResource('districts', DistrictController::class);
 
+Route::get('nationalities/all', [NationalityController::class, 'all'])->name('nationalities.all');
 Route::apiResource('nationalities', NationalityController::class);
 
 Route::apiResource('relapses', RelapseController::class);
@@ -63,6 +74,7 @@ Route::apiResource('users', UserController::class);
 
 Route::get('/trackingAppointmentCharts/{chartId}/patientExams', [PatientExamController::class, 'showByChart'])
     ->name('trackingAppointmentCharts.patientExams');
+
 Route::apiResource('trackingAppointmentCharts', TrackingAppointmentChartController::class);
 
 Route::apiResource('vitalSignsMeasurements', VitalSignsMeasurementController::class);

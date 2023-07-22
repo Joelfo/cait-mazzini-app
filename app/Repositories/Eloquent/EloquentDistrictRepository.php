@@ -9,4 +9,9 @@ class EloquentDistrictRepository extends EloquentBaseRepository implements Distr
     {
         parent::__construct(District::class);
     }
+
+    public function getByCity(int $cityId)
+    {
+        return $this->getByBelongsToRelationship('city_id', $cityId);
+    }
 }

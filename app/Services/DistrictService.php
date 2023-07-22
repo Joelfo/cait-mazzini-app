@@ -9,6 +9,10 @@ class DistrictService extends BaseService
         $this->setRepository($repository);
     }
 
+    public function getByCity(int $cityId){
+        return $this->repository->getByCity($cityId);
+    }
+
     public function getModelAttributesFromDTO($dto)
     {
         return [

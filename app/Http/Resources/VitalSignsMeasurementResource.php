@@ -24,7 +24,7 @@ class VitalSignsMeasurementResource extends JsonResource
             'oxygenSaturationPercentage' => $this->oxygen_saturation_percentage,
             'weightKg' => $this->weight_kg,
             'heightM' => $this->height_m,
-            'MeasurementDateTime' => $this->measurement_date_time,
+            'measurementDateTime' => $this->measurement_date_time,
             '_links' => $this->links()
         ];
     }

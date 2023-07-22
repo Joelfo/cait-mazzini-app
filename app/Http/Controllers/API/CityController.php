@@ -23,12 +23,17 @@ class CityController extends Controller
         return $this->controllerHelper->index($request);
     }
 
+    public function all() {
+        $cities = $this->service->all();
+        return CityResource::collection($cities);
+    }
+
     public function show(int $cityId){
         return $this->controllerHelper->show($cityId);
     }
 
     public function store(CityDTO $cityDTO){
-        return $this->controllerHelper->store($cityDTO);    
+        return $this->controllerHelper->store($cityDTO);
     }
 
     public function destroy(int $cityId){

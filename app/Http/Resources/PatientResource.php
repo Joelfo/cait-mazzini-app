@@ -31,11 +31,11 @@ use OpenApi\Annotations as OA;
  *     property="_links",
  *     type="array",
  *     example={
- *      {"rel": "self", "type": "get", "href": "http://localhost:8000/api/patients/29"}, 
+ *      {"rel": "self", "type": "get", "href": "http://localhost:8000/api/patients/29"},
  *      {"rel": "district", "type": "get", "href": "http://localhost:8000/api/districts/3"},
  *      {"rel": "healthUnity", "type": "get", "href": "http://localhost:8000/api/healthUnities/2"}
  *     },
- *     @OA\Items( 
+ *     @OA\Items(
  *       @OA\Property(property="rel", type="string"),
  *       @OA\Property(property="type", type="string"),
  *       @OA\Property(property="href", type="string")
@@ -55,22 +55,23 @@ class PatientResource extends JsonResource
     {
         return [
         'id' => $this->id,
-        'name' => $this->name, 
-        'susCard' => $this->sus_card, 
-        'rg' => $this->rg, 
-        'cpf' => $this->cpf, 
-        'admissionDate' => $this->admission_date->format('d/m/Y'), 
-        'type' => $this->type, 
-        'arrival' => $this->arrival, 
-        'telephone1' => $this->telephone_1, 
-        'telephone2' => $this->telephone_2, 
-        'cep' => $this->cep, 
-        'isPregnant' => $this->pregnant, 
+        'name' => $this->name,
+        'susCard' => $this->sus_card,
+        'rg' => $this->rg,
+        'cpf' => $this->cpf,
+        'admissionDate' => $this->admission_date->format('d/m/Y'),
+        'type' => $this->type,
+        'arrival' => $this->arrival,
+        'telephone1' => $this->telephone_1,
+        'telephone2' => $this->telephone_2,
+        'cep' => $this->cep,
+        'isPregnant' => $this->pregnant,
         'birthDate' => $this->birth_date->format('d/m/Y'),
-        'recordCode' => $this->record_code, 
-        'motherName' => $this->mother_name, 
+        'recordCode' => $this->record_code,
+        'motherName' => $this->mother_name,
         'address' => $this->address,
         'specialPopulation' => $this->special_population,
+        'birthplace' => $this->birthplace,
         '_links' => $this->links()
         ];
     }

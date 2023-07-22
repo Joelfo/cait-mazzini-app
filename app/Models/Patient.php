@@ -42,7 +42,7 @@ class Patient extends Model
         'other_special_population',
         'biological_gender',
         'district_id',
-        'birthplace_id',
+        'birthplace',
         'nationality_id',
         'health_unity_id'
     ];
